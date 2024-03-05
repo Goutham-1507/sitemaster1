@@ -25,6 +25,19 @@
           "odataVersion": "2.0"
         }
       }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "zsitemaster-display": {
+          "semanticObject": "zsitemaster",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {
@@ -75,13 +88,14 @@
         "settings": {
           "defaultBindingMode": "TwoWay"
         }
-
       }
     },
     "resources": {
-      "css": [{
-        "uri": "css/style.css"
-      }]
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
     },
     "routing": {
       "config": {
@@ -93,13 +107,15 @@
         "controlId": "app",
         "clearControlAggregation": false
       },
-      "routes": [{
-        "name": "RouteSiteMaster",
-        "pattern": ":?query:",
-        "target": [
-          "TargetSiteMaster"
-        ]
-      }],
+      "routes": [
+        {
+          "name": "RouteSiteMaster",
+          "pattern": ":?query:",
+          "target": [
+            "TargetSiteMaster"
+          ]
+        }
+      ],
       "targets": {
         "TargetSiteMaster": {
           "viewType": "XML",
@@ -116,5 +132,9 @@
       "async": true,
       "id": "App"
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "sitemaster"
   }
 }
