@@ -1,0 +1,95 @@
+<mvc:View controllerName="sitemaster.controller.SiteMaster"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core">
+    <!-- <Page id="page" title="{i18n>title}">
+        <content />
+    </Page> -->
+    <tnt:ToolPage id="toolPage">
+        <!-- <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" tooltip = "Expand" type="Transparent" press=".onSideNavButtonPress">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <Image src="../img/images.png" decorative="false" press="onLogoPressed" tooltip="SAP Logo">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                    </layoutData>
+                </Image>
+                <Title text="SDMS" wrapping="false" id="productName">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="Disappear"/>
+                    </layoutData>
+                </Title>
+                <tnt:ToolHeaderUtilitySeparator />
+                <ToolbarSpacer>
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+                    </layoutData>
+                </ToolbarSpacer>
+            </tnt:ToolHeader>
+        </tnt:header> -->
+        <tnt:sideContent width = "10%">
+            <tnt:SideNavigation id="idSideNav" selectedKey="{nav>/SelectedKey}" itemSelect=".onItemSelect" width = "13rem">
+                <tnt:NavigationList >
+                    <tnt:NavigationListItem id = "MenuId"  key = "toggle" icon="sap-icon://open-command-field" expanded="false" hasExpander="false" />
+                    <tnt:NavigationListItem  key = "institution" text="{i18n>institution}" icon="sap-icon://building">
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem  key = "sites" text="{i18n>sites}" icon="sap-icon://addresses"/>
+                    <tnt:NavigationListItem key = "services" text="{i18n>services}" icon="sap-icon://SAP-icons-TNT/application-service">
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem key = "ICD" text="{i18n>ICD}" icon="sap-icon://documents"/>
+                    <tnt:NavigationListItem key = "documents" text="{i18n>documents}" icon="sap-icon://documents"/>
+                    <tnt:NavigationListItem key = "equipment" text="{i18n>equipment}" icon="sap-icon://crossed-line-chart"/>
+
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer id="pageContainer" initialPage="institution">
+                <pages>
+                    <Page   id = "institution" title = "Institution" class = "sapUiContentPadding">
+                        <core:Fragment fragmentName="sitemaster.fragment.institution" type="XML" />
+                    </Page>
+                    <!-- <ScrollContainer id="institution" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding"> -->
+                    <!-- <core:Fragment fragmentName="sitemaster.fragment.institution" type="XML" /> -->
+                    <!-- </ScrollContainer> -->
+                    <Page   id = "sites" title = "Sites">
+                        <core:Fragment fragmentName="sitemaster.fragment.sites" type="XML" />
+                    </Page>
+                    <!-- <ScrollContainer id="sites" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding"> -->
+                    <!-- <core:Fragment fragmentName="masterdata.fragment.masterdatasections.Sites" type="XML" /> -->
+                    <!-- </ScrollContainer> -->
+                    <Page   id = "services" title = "Services">
+                        <core:Fragment fragmentName="sitemaster.fragment.services" type="XML" />
+                    </Page>
+                    <!-- <ScrollContainer id="services" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding"> -->
+                    <!-- <core:Fragment fragmentName="masterdata.fragment.masterdatasections.Services" type="XML" /> -->
+                    <!-- </ScrollContainer> -->
+                    <Page   id = "ICD" title = "ICD">
+                        <core:Fragment fragmentName="sitemaster.fragment.ICD" type="XML" />
+                    </Page>
+                    <!-- <ScrollContainer id="ICD" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding"> -->
+                    <!-- <core:Fragment fragmentName="masterdata.fragment.masterdatasections.ICD" type="XML" /> -->
+                    <!-- </ScrollContainer> -->
+                    <Page   id = "documents" title = "Documents">
+                        <core:Fragment fragmentName="sitemaster.fragment.documents" type="XML" />
+                    </Page>
+                    <!-- <ScrollContainer id="documents" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding"> -->
+                    <!-- <core:Fragment fragmentName="masterdata.fragment.masterdatasections.Documents" type="XML" /> -->
+                    <!-- </ScrollContainer> -->
+                    <Page   id = "equipment" title = "Equipment">
+                        <core:Fragment fragmentName="sitemaster.fragment.equipment" type="XML" />
+                    </Page>
+                    <!-- <ScrollContainer id="equipment" horizontal="false" vertical="true" height="20rem" class="sapUiContentPadding"> -->
+                    <!-- <core:Fragment fragmentName="masterdata.fragment.masterdatasections.Equipment" type="XML" /> -->
+                    <!-- </ScrollContainer> -->
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+

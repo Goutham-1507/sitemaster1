@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:ux="sap.uxap">
+    <Dialog state="Warning" contentWidth="auto" contentHeight="auto" class = "sapUiContentPadding">
+        <content>
+            <Text text="{i18n>DeleteConfirmation}"/>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="{i18n>Confirm}" press="confirmDelete" />
+                    <Button text="Cancel" press=".cancel" ariaHasPopup="Dialog" />
+                </content>
+            </Toolbar>
+        </footer>
+
+    </Dialog>
+
+</core:FragmentDefinition>
