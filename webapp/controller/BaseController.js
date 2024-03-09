@@ -52,10 +52,10 @@ sap.ui.define([
         //  this.mEvent=oEvent;
             var object = {}
             Object.assign(object, oPendingChanges[aKeys[0]])
-            oDataModel.create(Entity, object, {
-                groupId: "createChanges"
-            });
-            oDataModel.resetChanges();
+            // oDataModel.create(Entity, object, {
+            //     groupId: "createChanges"
+            // });
+            // oDataModel.resetChanges();
 
             oDataModel.submitChanges({
                 success: function (oData) {

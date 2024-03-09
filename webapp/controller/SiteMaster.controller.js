@@ -87,8 +87,10 @@ sap.ui.define([
                 var dinstitution = this.mDialogs['Institution'];
                 that = this;
                 var oView = this.getView();
+                sap.ui.core.BusyIndicator.show(0);
                 dinstitution.then(function (pDialog) {
                     debugger;
+                    sap.ui.core.BusyIndicator.hide();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
                         events: {
@@ -123,8 +125,10 @@ sap.ui.define([
                 var ddocument = this.mDialogs['Document'];
                 that = this;
                 var oView = this.getView();
+                sap.ui.core.BusyIndicator.show(0);
                 ddocument.then(function (pDialog) {
                     debugger;
+                    sap.ui.core.BusyIndicator.hide();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
                         events: {
@@ -157,8 +161,10 @@ sap.ui.define([
                 var dequipment = this.mDialogs['Equipment'];
                 that = this;
                 var oView = this.getView();
+                sap.ui.core.BusyIndicator.show(0);
                 dequipment.then(function (pDialog) {
                     debugger;
+                    sap.ui.core.BusyIndicator.hide();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
                         events: {
@@ -191,8 +197,10 @@ sap.ui.define([
                 var dICD = this.mDialogs['ICD'];
                 that = this;
                 var oView = this.getView();
+                sap.ui.core.BusyIndicator.show(0);
                 dICD.then(function (pDialog) {
                     debugger;
+                    sap.ui.core.BusyIndicator.hide();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
                         events: {
@@ -226,8 +234,10 @@ sap.ui.define([
                 var dservices = this.mDialogs['Services'];
                 that = this;
                 var oView = this.getView();
+                sap.ui.core.BusyIndicator.show(0);
                 dservices.then(function (pDialog) {
                     debugger;
+                    sap.ui.core.BusyIndicator.hide();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
                         events: {
@@ -260,8 +270,10 @@ sap.ui.define([
                 var dsites = this.mDialogs['Sites'];
                 that = this;
                 var oView = this.getView();
+                sap.ui.core.BusyIndicator.show(0);
                 dsites.then(function (pDialog) {
                     debugger;
+                    sap.ui.core.BusyIndicator.hide();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
                         events: {
