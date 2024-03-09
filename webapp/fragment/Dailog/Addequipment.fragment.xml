@@ -20,12 +20,6 @@
                     <smartField:SmartField value="{Sitename}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeReference}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentMappingRef}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
                     <smartField:SmartField value="{Language}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>

@@ -62,21 +62,20 @@ sap.ui.define([
                     var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
                     if (oRepsonse.statusCode < "300") {
                         if (oRepsonse.statusText === "Created") {
-                            alert('S')
-                            MessageToast.show("New Study Definition is created successfully");
+                            MessageToast.show("Created successfully");
                         } else {
-                            MessageToast.show("Study Definition is created successfully");
+                            MessageToast.show("Updated successfully");
                         }
 
                         oEvent.getSource().getParent().getParent().close()
-                        this.getView().getModel("uiModel").setData({
-                            mode: "display",
-                            editable: false
-                        }, true);
+                        // this.getView().getModel("uiModel").setData({
+                        //     mode: "display",
+                        //     editable: false
+                        // }, true);
                     }
                 }.bind(this),
                 error: function (oError) {
-                    alert('=E')
+                    sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
                 }
             });
 

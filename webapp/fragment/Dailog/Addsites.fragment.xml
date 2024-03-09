@@ -4,8 +4,8 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Dialog  title ="{i18n>Addsite}"  >
-    <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
+    <Dialog  title ="{i18n>Addsite}">
+        <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
             <smartForm:layout>
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
@@ -31,51 +31,8 @@
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{ContactPerson}" />
                 </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address1}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address2}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address3}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address4}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{City}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{District}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Region}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Zipcode}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Country}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{OfficeTelephone}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Extension}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{MobileTelephone}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Email}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Website}" />
-                </smartForm:GroupElement>
             </smartForm:Group>
         </smartForm:SmartForm>
-
         <footer>
             <Toolbar>
                 <content>

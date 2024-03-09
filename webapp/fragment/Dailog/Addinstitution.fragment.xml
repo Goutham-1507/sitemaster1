@@ -10,20 +10,12 @@
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
             <smartForm:Group>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{SitemasterRef}" />
-                </smartForm:GroupElement>
+>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Sitecode}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Sitename}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeReference}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentMappingRef}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Language}" />
