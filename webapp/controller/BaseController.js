@@ -6,7 +6,7 @@ sap.ui.define([
     'sap/ui/core/message/Message',
     'sap/ui/core/library',
     "sap/m/MessageToast",
-], function (Controller, History, UIComponent, Core, Message, coreLibrary,MessageToast) {
+], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast) {
 
     "use strict";
     var MessageType = coreLibrary.MessageType;
@@ -49,7 +49,7 @@ sap.ui.define([
 
             var oPendingChanges = oDataModel.getPendingChanges();
             var aKeys = Object.keys(oPendingChanges);
-        //  this.mEvent=oEvent;
+            //  this.mEvent=oEvent;
             var object = {}
             Object.assign(object, oPendingChanges[aKeys[0]])
             // oDataModel.create(Entity, object, {
@@ -59,14 +59,14 @@ sap.ui.define([
 
             oDataModel.submitChanges({
                 success: function (oData) {
-                    var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
+                    var oRepsonse = (oData.__batchResponses.length === 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
                     if (oRepsonse.statusCode < "300") {
                         if (oRepsonse.statusText === "Created") {
                             MessageToast.show("Created successfully");
                         } else {
                             MessageToast.show("Updated successfully");
                         }
-
+                        this.smartTable.rebindTable();
                         oEvent.getSource().getParent().getParent().close()
                         // this.getView().getModel("uiModel").setData({
                         //     mode: "display",

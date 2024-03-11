@@ -70,6 +70,7 @@ sap.ui.define([
                 oEvent.getSource().getParent().getParent().close();
             },
             onAddinstitution: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent().getParent();
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 that = this;
                 var dinstitution = this.mDialogs['Institution'];
@@ -83,6 +84,7 @@ sap.ui.define([
 
             },
             institutionDetPress: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent();
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 var dinstitution = this.mDialogs['Institution'];
                 that = this;
@@ -108,6 +110,7 @@ sap.ui.define([
             },
 
             onAdddocuments: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent().getParent();
                 await this.openDialog('Document', 'sitemaster.fragment.Dailog.Adddocuments');
                 that = this;
                 var ddocument = this.mDialogs['Document'];
@@ -121,6 +124,7 @@ sap.ui.define([
 
             },
             documentsDetPress: function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent();
                 this.openDialog('Document', 'sitemaster.fragment.Dailog.Adddocuments');
                 var ddocument = this.mDialogs['Document'];
                 that = this;
@@ -144,6 +148,7 @@ sap.ui.define([
 
             },
             onAddequipment: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent().getParent();
                 await this.openDialog('Equipment', 'sitemaster.fragment.Dailog.Addequipment');
                 that = this;
                 var dequipment = this.mDialogs['Equipment'];
@@ -157,6 +162,7 @@ sap.ui.define([
 
             },
             equipmentDetPress: function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent();
                 this.openDialog('Equipment', 'sitemaster.fragment.Dailog.Addequipment');
                 var dequipment = this.mDialogs['Equipment'];
                 that = this;
@@ -180,6 +186,7 @@ sap.ui.define([
 
             },
             onAddICD: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent().getParent();
                 await this.openDialog('ICD', 'sitemaster.fragment.Dailog.AddICD');
                 that = this;
                 var dICD = this.mDialogs['ICD'];
@@ -193,6 +200,7 @@ sap.ui.define([
 
             },
             ICDDetPress: function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent();
                 this.openDialog('ICD', 'sitemaster.fragment.Dailog.AddICD');
                 var dICD = this.mDialogs['ICD'];
                 that = this;
@@ -217,6 +225,7 @@ sap.ui.define([
             },
 
             onAddServices: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent().getParent();
                 await this.openDialog('Services', 'sitemaster.fragment.Dailog.Addservices');
                 that = this;
                 var dservices = this.mDialogs['Services'];
@@ -230,6 +239,7 @@ sap.ui.define([
 
             },
             servicesDetPress: function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent();
                 this.openDialog('Services', 'sitemaster.fragment.Dailog.Addservices');
                 var dservices = this.mDialogs['Services'];
                 that = this;
@@ -253,6 +263,7 @@ sap.ui.define([
 
             },
             onAddSites: async function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent().getParent();
                 await this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
                 that = this;
                 var dsites = this.mDialogs['Sites'];
@@ -266,6 +277,7 @@ sap.ui.define([
 
             },
             sitesDetPress: function (oEvent) {
+                this.smartTable = oEvent.getSource().getParent();
                 this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
                 var dsites = this.mDialogs['Sites'];
                 that = this;

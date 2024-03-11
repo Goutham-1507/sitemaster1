@@ -4,39 +4,65 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-  <Dialog  title ="{i18n>Addinstitution}"  >
+    <Dialog  title ="{i18n>Addinstitution}">
         <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
             <smartForm:layout>
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
             <smartForm:Group>
->
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitecode}" />
+                    <smartField:SmartField value="{language}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" />
+                    <smartField:SmartField value="{InstitutionCode}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Language}" />
+                    <smartField:SmartField value="{InstitutionName}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeID}" />
+                    <smartField:SmartField value="{Address1}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentType}" />
+                    <smartField:SmartField value="{Address2}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentName}" />
+                    <smartField:SmartField value="{Address3}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Status}" />
+                    <smartField:SmartField value="{Address4}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentSerialNumber}" />
+                    <smartField:SmartField value="{City}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentBrandName}" />
+                    <smartField:SmartField value="{District}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Region}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Zipcode}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Country}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{OfficeTelephone}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Extension}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{MobileNumber}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Email}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Website}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Remarks}" />
                 </smartForm:GroupElement>
             </smartForm:Group>
         </smartForm:SmartForm>
