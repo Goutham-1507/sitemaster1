@@ -57,9 +57,13 @@ sap.ui.define([
             // });
             // oDataModel.resetChanges();
 
+            this.oDataSubmitChanges(oDataSubmitChanges,oEvent);
+        },
+
+        oDataSubmitChanges: function (oDataModel,oEvent) {
             oDataModel.submitChanges({
                 success: function (oData) {
-                    var oRepsonse = (oData.__batchResponses.length === 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
+                    var oRepsonse = (oData.__batchResponses.length > 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
                     if (oRepsonse.statusCode < "300") {
                         if (oRepsonse.statusText === "Created") {
                             MessageToast.show("Created successfully");
@@ -67,7 +71,7 @@ sap.ui.define([
                             MessageToast.show("Updated successfully");
                         }
                         this.smartTable.rebindTable();
-                        oEvent.getSource().getParent().getParent().close()
+                        oEvent && oEvent.getSource().getParent().getParent().close();
                         // this.getView().getModel("uiModel").setData({
                         //     mode: "display",
                         //     editable: false
@@ -78,7 +82,6 @@ sap.ui.define([
                     sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
                 }
             });
-
         }
 
 

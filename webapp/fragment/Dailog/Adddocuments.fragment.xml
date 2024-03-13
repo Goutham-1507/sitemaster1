@@ -10,12 +10,6 @@
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
             <smartForm:Group>
-                <!-- <smartForm:GroupElement>
-                    <smartField:SmartField value="{SitemasterRef}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{DocumentcatRef}" />
-                </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Language}" />
                 </smartForm:GroupElement>
@@ -35,7 +29,7 @@
                     <smartField:SmartField value="{Documentdescription}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Default1}" />
+                    <smartField:SmartField value="{Category}" />
                 </smartForm:GroupElement>
             </smartForm:Group>
         </smartForm:SmartForm>

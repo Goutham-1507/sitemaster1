@@ -7,12 +7,16 @@ sap.ui.define([
         "sap/m/MessageItem",
         "sap/ui/core/message/Message",
         "sap/ui/core/Element",
-        "sap/m/MessageToast"
+        "sap/m/MessageToast",
+        "sitemaster/JScripts/jszip",
+        "sitemaster/JScripts/xlsx"
+
+
     ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, BaseController, Core, History, MessagePopover, MessageItem, Message, Element, MessageToast) {
+    function (Controller, BaseController, Core, History, MessagePopover, MessageItem, Message, Element, MessageToast, jszip, xlsx) {
         "use strict";
         var that;
         return BaseController.extend("sitemaster.controller.SiteMaster", {
@@ -372,6 +376,44 @@ sap.ui.define([
                     sap.m.MessageToast.show("Deleted Successfully!")
                 });
             },
+
+            onUpload: function (e) {
+                this.smartTable = e.getSource().getParent().getParent();
+                this.excelEntity = e.getSource().getParent().getParent().getProperty("entitySet");
+                this._import(e.getParameter("files") && e.getParameter("files")[0]);
+
+            },
+
+            _import: function (file) {
+                var that = this;
+                var excelData = {};
+                if (file && window.FileReader) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var data = e.target.result;
+                        var workbook = XLSX.read(data, {
+                            type: 'binary'
+                        });
+                        var oDataModel = that._oDataModel;
+                        oDataModel.resetChanges()
+                        workbook.SheetNames.forEach(function (sheetName) {
+                            // Here is your object for every sheet in workbook
+                            excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                            excelData.forEach(ele => {
+                                var json = JSON.parse(JSON.stringify(ele));
+                                oDataModel.create(`/${that.excelEntity}`, json, {
+                                    groupId: "createChanges"
+                                });
+                            });
+                            that.oDataSubmitChanges(oDataModel);
+                        });
+                    };
+                    reader.onerror = function (ex) {
+                        console.log(ex);
+                    };
+                    reader.readAsBinaryString(file);
+                }
+            }
 
 
 
