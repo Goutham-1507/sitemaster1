@@ -5,6 +5,15 @@
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
   <Dialog  title ="{i18n>Addequipment}"  >
+  <customHeader>
+            <Toolbar>
+                <content>
+                    <Title text ="{i18n>Addequipment}"></Title>
+                    <ToolbarSpacer/>
+                    <Button icon = "{=${uiModel>/formEdit} ? 'sap-icon://display' : 'sap-icon://edit'}" press = "toggleEdit"></Button>
+                </content>
+            </Toolbar>
+        </customHeader>
         <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
             <smartForm:layout>
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
@@ -14,31 +23,31 @@
                     <smartField:SmartField value="{SitemasterRef}" />
                 </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitecode}" />
+                    <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" />
+                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Language}" />
+                    <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeID}" />
+                    <smartField:SmartField value="{EquipmentTypeID}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentType}" />
+                    <smartField:SmartField value="{EquipmentType}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentName}" />
+                    <smartField:SmartField value="{EquipmentName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Status}" />
+                    <smartField:SmartField value="{Status}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentSerialNumber}" />
+                    <smartField:SmartField value="{EquipmentSerialNumber}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentBrandName}" />
+                    <smartField:SmartField value="{EquipmentBrandName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
  
             </smartForm:Group>

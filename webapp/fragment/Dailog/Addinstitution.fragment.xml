@@ -5,64 +5,73 @@
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Dialog  title ="{i18n>Addinstitution}">
+        <customHeader>
+            <Toolbar>
+                <content>
+                    <Title text ="{i18n>Addinstitution}"></Title>
+                    <ToolbarSpacer/>
+                    <Button icon = "{=${uiModel>/formEdit} ? 'sap-icon://display' : 'sap-icon://edit'}" press = "toggleEdit"></Button>
+                </content>
+            </Toolbar>
+        </customHeader>
         <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
             <smartForm:layout>
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
             <smartForm:Group>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{language}" />
+                    <smartField:SmartField value="{language}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{InstitutionCode}" />
+                    <smartField:SmartField value="{InstitutionCode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{InstitutionName}" />
+                    <smartField:SmartField value="{InstitutionName}" editable = "{uiModel>/formEdit}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address1}" />
+                    <smartField:SmartField value="{Address1}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address2}" />
+                    <smartField:SmartField value="{Address2}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address3}" />
+                    <smartField:SmartField value="{Address3}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Address4}" />
+                    <smartField:SmartField value="{Address4}" editable = "{uiModel>/formEdit}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{City}" />
+                    <smartField:SmartField value="{City}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{District}" />
+                    <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Region}" />
+                    <smartField:SmartField value="{Region}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Zipcode}" />
+                    <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Country}" />
+                    <smartField:SmartField value="{Country}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{OfficeTelephone}" />
+                    <smartField:SmartField value="{OfficeTelephone}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Extension}" />
+                    <smartField:SmartField value="{Extension}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{MobileNumber}" />
+                    <smartField:SmartField value="{MobileNumber}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Email}" />
+                    <smartField:SmartField value="{Email}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Website}" />
+                    <smartField:SmartField value="{Website}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Remarks}" />
+                    <smartField:SmartField value="{Remarks}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
             </smartForm:Group>
         </smartForm:SmartForm>

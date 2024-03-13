@@ -5,6 +5,15 @@
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Dialog  title ="{i18n>Addservices}"  >
+    <customHeader>
+            <Toolbar>
+                <content>
+                    <Title text ="{i18n>Addservices}"></Title>
+                    <ToolbarSpacer/>
+                    <Button icon = "{=${uiModel>/formEdit} ? 'sap-icon://display' : 'sap-icon://edit'}" press = "toggleEdit"></Button>
+                </content>
+            </Toolbar>
+        </customHeader>
     <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
             <smartForm:layout>
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
@@ -17,28 +26,28 @@
                     <smartField:SmartField value="{ServicecatRef}" />
                 </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitecode}" />
+                    <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" />
+                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Languagekey}" />
+                    <smartField:SmartField value="{Languagekey}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{ServiceCode}" />
+                    <smartField:SmartField value="{ServiceCode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{ShortName}" />
+                    <smartField:SmartField value="{ShortName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
             	<smartForm:GroupElement>
-                    <smartField:SmartField value="{ServiceDescription}" />
+                    <smartField:SmartField value="{ServiceDescription}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Category}" />
+                    <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{ServiceCategoryIndicator}" />
+                    <smartField:SmartField value="{ServiceCategoryIndicator}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
             </smartForm:Group>
         </smartForm:SmartForm>

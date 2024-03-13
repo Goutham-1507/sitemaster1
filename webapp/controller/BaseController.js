@@ -59,7 +59,6 @@ sap.ui.define([
 
             this.oDataSubmitChanges(oDataSubmitChanges,oEvent);
         },
-
         oDataSubmitChanges: function (oDataModel,oEvent) {
             oDataModel.submitChanges({
                 success: function (oData) {
@@ -82,6 +81,10 @@ sap.ui.define([
                     sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
                 }
             });
+        },
+        toggleEdit: function(oEvent){
+            this.getView().getModel('uiModel').setProperty('/formEdit', !this.getView().getModel('uiModel').getProperty('/formEdit'));
+
         }
 
 

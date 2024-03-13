@@ -10,8 +10,6 @@ sap.ui.define([
         "sap/m/MessageToast",
         "sitemaster/JScripts/jszip",
         "sitemaster/JScripts/xlsx"
-
-
     ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -30,7 +28,8 @@ sap.ui.define([
                 this._oDataModel.setDeferredGroups(this._oDataModel.getDeferredGroups().concat(["createChanges", "deleteChanges"]));
                 var oUIModel = new sap.ui.model.json.JSONModel({
                     mode: "",
-                    editable: true
+                    editable: true,
+                    formEdit: false
                 });
                 this.getView().setModel(oUIModel, "uiModel");
                 this._MessageManager = Core.getMessageManager();
@@ -39,7 +38,6 @@ sap.ui.define([
                 this._MessageManager.registerObject(oView, true);
                 oView.setModel(this._MessageManager.getMessageModel(), "message");
             },
-
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 if (oItem.getKey() === 'toggle') {
@@ -69,12 +67,12 @@ sap.ui.define([
                     // oToggleButton.setTooltip('Collapse');
                 }
             },
-
             cancel: function (oEvent) {
                 oEvent.getSource().getParent().getParent().close();
             },
-            onAddinstitution: async function (oEvent) {
+            onAddinstitution: async function (oEvent) {  
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 that = this;
                 var dinstitution = this.mDialogs['Institution'];
@@ -83,12 +81,13 @@ sap.ui.define([
                     var oContext = that._oDataModel.createEntry("/INSTITUTIONMASTER");
                     pDialog.unbindObject()
                     pDialog.setBindingContext(oContext)
-                    
+
                 })
 
             },
             institutionDetPress: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 var dinstitution = this.mDialogs['Institution'];
                 that = this;
@@ -115,6 +114,7 @@ sap.ui.define([
 
             onAdddocuments: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Document', 'sitemaster.fragment.Dailog.Adddocuments');
                 that = this;
                 var ddocument = this.mDialogs['Document'];
@@ -123,12 +123,13 @@ sap.ui.define([
                     var oContext = that._oDataModel.createEntry("/DOCUMENTMASTER");
                     pDialog.unbindObject()
                     pDialog.setBindingContext(oContext)
-                    
+
                 })
 
             },
             documentsDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 this.openDialog('Document', 'sitemaster.fragment.Dailog.Adddocuments');
                 var ddocument = this.mDialogs['Document'];
                 that = this;
@@ -153,6 +154,7 @@ sap.ui.define([
             },
             onAddequipment: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Equipment', 'sitemaster.fragment.Dailog.Addequipment');
                 that = this;
                 var dequipment = this.mDialogs['Equipment'];
@@ -161,12 +163,13 @@ sap.ui.define([
                     var oContext = that._oDataModel.createEntry("/EquipmentMaster");
                     pDialog.unbindObject()
                     pDialog.setBindingContext(oContext)
-                    
+
                 })
 
             },
             equipmentDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 this.openDialog('Equipment', 'sitemaster.fragment.Dailog.Addequipment');
                 var dequipment = this.mDialogs['Equipment'];
                 that = this;
@@ -191,6 +194,7 @@ sap.ui.define([
             },
             onAddICD: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('ICD', 'sitemaster.fragment.Dailog.AddICD');
                 that = this;
                 var dICD = this.mDialogs['ICD'];
@@ -199,12 +203,13 @@ sap.ui.define([
                     var oContext = that._oDataModel.createEntry("/ICDMASTER");
                     pDialog.setBindingContext(oContext)
                     pDialog.unbindObject()
-                   
+
                 })
 
             },
             ICDDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 this.openDialog('ICD', 'sitemaster.fragment.Dailog.AddICD');
                 var dICD = this.mDialogs['ICD'];
                 that = this;
@@ -230,6 +235,7 @@ sap.ui.define([
 
             onAddServices: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Services', 'sitemaster.fragment.Dailog.Addservices');
                 that = this;
                 var dservices = this.mDialogs['Services'];
@@ -238,12 +244,13 @@ sap.ui.define([
                     var oContext = that._oDataModel.createEntry("/SERVICEMASTER");
                     pDialog.unbindObject()
                     pDialog.setBindingContext(oContext)
-                    
+
                 })
 
             },
             servicesDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 this.openDialog('Services', 'sitemaster.fragment.Dailog.Addservices');
                 var dservices = this.mDialogs['Services'];
                 that = this;
@@ -268,6 +275,7 @@ sap.ui.define([
             },
             onAddSites: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
                 that = this;
                 var dsites = this.mDialogs['Sites'];
@@ -276,12 +284,13 @@ sap.ui.define([
                     var oContext = that._oDataModel.createEntry("/SITEMASTER");
                     pDialog.unbindObject()
                     pDialog.setBindingContext(oContext)
-                    
+
                 })
 
             },
             sitesDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
                 var dsites = this.mDialogs['Sites'];
                 that = this;
@@ -309,23 +318,23 @@ sap.ui.define([
             },
 
             savedocumnets: function (oEvent) {
-                this.saveEntity(`/DOCUMENTMASTER`, this._oDataModel,oEvent);
+                this.saveEntity(`/DOCUMENTMASTER`, this._oDataModel, oEvent);
             },
 
             saveequipment: function (oEvent) {
-                this.saveEntity(`/EquipmentMaster`, this._oDataModel,oEvent);
+                this.saveEntity(`/EquipmentMaster`, this._oDataModel, oEvent);
             },
             saveICD: function (oEvent) {
-                this.saveEntity(`/ICDMASTER`, this._oDataModel,oEvent);
+                this.saveEntity(`/ICDMASTER`, this._oDataModel, oEvent);
             },
             saveinstitution: function (oEvent) {
-                this.saveEntity(`/INSTITUTIONMASTER`, this._oDataModel,oEvent);
+                this.saveEntity(`/INSTITUTIONMASTER`, this._oDataModel, oEvent);
             },
             saveservices: function (oEvent) {
-                this.saveEntity(`/SERVICEMASTER`, this._oDataModel,oEvent);
+                this.saveEntity(`/SERVICEMASTER`, this._oDataModel, oEvent);
             },
             savesites: function (oEvent) {
-                this.saveEntity(`/SITEMASTER`, this._oDataModel,oEvent);
+                this.saveEntity(`/SITEMASTER`, this._oDataModel, oEvent);
             },
 
             onDeleteTableRow: function (oEvent) {
