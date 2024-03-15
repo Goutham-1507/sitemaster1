@@ -6,11 +6,13 @@ sap.ui.define([
     'sap/ui/core/message/Message',
     'sap/ui/core/library',
     "sap/m/MessageToast",
-], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast) {
+    'sap/ui/model/Filter'
+], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast, Filter) {
 
     "use strict";
     var MessageType = coreLibrary.MessageType;
     var that;
+    var entityKeyFields = {};
     return Controller.extend("sitemaster.controller.BaseController", {
         declareModel: function (modelName) {
             this.getView().setModel(new sap.ui.model.json.JSONModel({}), modelName);
@@ -19,7 +21,39 @@ sap.ui.define([
         refreshModel: function (model) {
             this.getView().getModel(model).refresh();
         },
+        defineEntityKeyFields: function () {
+            entityKeyFields[`${this.getView().byId('idDocument').getEntitySet()}`] = 'DocumentID';
+            entityKeyFields[`${this.getView().byId('idEquipment').getEntitySet()}`] = "EquipmentTypeID";
+            entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = "ChapterID";
+            entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = "InstitutionCode";
+            entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = "ServiceCode";
+            entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = "InstitutionCode";
+        },
+        ValidateEntityData: async function (field, entity, object) {
+            // `'${field}'`, 'EQ', '${object['${field}']}'
+            var filter = new Filter(
+                {
+                    path: `${field}`,
+                    operator: 'EQ',
+                    value1: object[field]
+                }
+            )
+            await this.getOwnerComponent().getModel().read(`/${entity}`, {
+                filters: [filter],
+                success: (oData) => {
+                    // debugger;
+                    if (oData.results.length !== 0) {
+                        MessageToast.show('Key field already exists');
+                    } else {
+                        this.oDataSubmitChanges(this._oDataModel, this.oEvent);
+                    }
+                },
+                error: (oData) => {
+                    debugger;
+                }
+            })
 
+        },
         openDialog: function (name, path) {
             var sname = name;
             this.mDialogs = this.mDialogs || {};
@@ -45,21 +79,27 @@ sap.ui.define([
             sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
         },
 
-        saveEntity: function (Entity, oDataModel, oEvent) {
+        saveEntity: async function (Entity, oDataModel, oEvent) {
 
+            this.oEvent = oEvent
             var oPendingChanges = oDataModel.getPendingChanges();
             var aKeys = Object.keys(oPendingChanges);
             //  this.mEvent=oEvent;
             var object = {}
+
+            debugger;
+
             Object.assign(object, oPendingChanges[aKeys[0]])
+            var RPresent = await this.ValidateEntityData(entityKeyFields[this.smartTable.getEntitySet()], this.smartTable.getEntitySet(), object)
             // oDataModel.create(Entity, object, {
             //     groupId: "createChanges"
             // });
             // oDataModel.resetChanges();
 
-            this.oDataSubmitChanges(oDataSubmitChanges,oEvent);
+            // this.oDataSubmitChanges(oDataModel, oEvent);
         },
-        oDataSubmitChanges: function (oDataModel,oEvent) {
+        oDataSubmitChanges: function (oDataModel, oEvent) {
+            debugger;
             oDataModel.submitChanges({
                 success: function (oData) {
                     var oRepsonse = (oData.__batchResponses.length > 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
@@ -82,7 +122,7 @@ sap.ui.define([
                 }
             });
         },
-        toggleEdit: function(oEvent){
+        toggleEdit: function (oEvent) {
             this.getView().getModel('uiModel').setProperty('/formEdit', !this.getView().getModel('uiModel').getProperty('/formEdit'));
 
         }
@@ -90,3 +130,6 @@ sap.ui.define([
 
     });
 });
+
+
+

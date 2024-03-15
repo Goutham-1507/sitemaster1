@@ -1,16 +1,16 @@
 sap.ui.define([
-        "sap/ui/core/mvc/Controller",
-        "./BaseController",
-        "sap/ui/core/Core",
-        "sap/ui/core/routing/History",
-        "sap/m/MessagePopover",
-        "sap/m/MessageItem",
-        "sap/ui/core/message/Message",
-        "sap/ui/core/Element",
-        "sap/m/MessageToast",
-        "sitemaster/JScripts/jszip",
-        "sitemaster/JScripts/xlsx"
-    ],
+    "sap/ui/core/mvc/Controller",
+    "./BaseController",
+    "sap/ui/core/Core",
+    "sap/ui/core/routing/History",
+    "sap/m/MessagePopover",
+    "sap/m/MessageItem",
+    "sap/ui/core/message/Message",
+    "sap/ui/core/Element",
+    "sap/m/MessageToast",
+    "sitemaster/JScripts/jszip",
+    "sitemaster/JScripts/xlsx"
+],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
@@ -37,7 +37,9 @@ sap.ui.define([
                 this._MessageManager.removeAllMessages();
                 this._MessageManager.registerObject(oView, true);
                 oView.setModel(this._MessageManager.getMessageModel(), "message");
+                this.defineEntityKeyFields();
             },
+
             onItemSelect: function (oEvent) {
                 var oItem = oEvent.getParameter("item");
                 if (oItem.getKey() === 'toggle') {
@@ -67,6 +69,7 @@ sap.ui.define([
                     // oToggleButton.setTooltip('Collapse');
                 }
             },
+
             cancel: function (oEvent) {
                 oEvent.getSource().getParent().getParent().close();
             },
@@ -313,8 +316,10 @@ sap.ui.define([
                 })
 
             },
+
             cancel: function (oEvent) {
                 oEvent.getSource().getParent().getParent().close();
+                this._oDataModel.resetChanges();
             },
 
             savedocumnets: function (oEvent) {
@@ -385,7 +390,6 @@ sap.ui.define([
                     sap.m.MessageToast.show("Deleted Successfully!")
                 });
             },
-
             onUpload: function (e) {
                 this.smartTable = e.getSource().getParent().getParent();
                 this.excelEntity = e.getSource().getParent().getParent().getProperty("entitySet");
@@ -404,7 +408,6 @@ sap.ui.define([
                             type: 'binary'
                         });
                         var oDataModel = that._oDataModel;
-                        oDataModel.resetChanges()
                         workbook.SheetNames.forEach(function (sheetName) {
                             // Here is your object for every sheet in workbook
                             excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
@@ -424,213 +427,5 @@ sap.ui.define([
                 }
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // savesites: function (oEvent) {
-            //     var oPendingChanges = this._oDataModel.getPendingChanges();
-            //     var aKeys = Object.keys(oPendingChanges);
-
-            //     var object = {}
-            //     Object.assign(object, oPendingChanges[aKeys[0]])
-            //     this._oDataModel.create("/SITEMASTER", object, {
-            //         groupId: "createChanges"
-            //     });
-            //     this._oDataModel.resetChanges();
-
-            //     this._oDataModel.submitChanges({
-            //         success: function (oData) {
-            //             var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
-            //             if (oRepsonse.statusCode < "300") {
-            //                 if (oRepsonse.statusText === "Created") {
-            //                     alert('S')
-            //                     MessageToast.show("New Study Definition is created successfully");
-            //                 } else {
-            //                     MessageToast.show("Study Definition is created successfully");
-            //                 }
-            //                 this.getView().getModel("uiModel").setData({
-            //                     mode: "display",
-            //                     editable: false
-            //                 }, true);
-            //             }
-            //         }.bind(this),
-            //         error: function (oError) {
-            //             alert('=E')
-            //         }
-            //     });
-            // },
-            // savedocumnets: function (oEvent) {
-            //     var oPendingChanges = this._oDataModel.getPendingChanges();
-            //     var aKeys = Object.keys(oPendingChanges);
-
-            //     var object = {}
-            //     Object.assign(object, oPendingChanges[aKeys[0]])
-            //     this._oDataModel.create("/DOCUMENTMASTER", object, {
-            //         groupId: "createChanges"
-            //     });
-            //     this._oDataModel.resetChanges();
-
-            //     this._oDataModel.submitChanges({
-            //         success: function (oData) {
-            //             var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
-            //             if (oRepsonse.statusCode < "300") {
-            //                 if (oRepsonse.statusText === "Created") {
-            //                     alert('S')
-            //                     MessageToast.show("New Study Definition is created successfully");
-            //                 } else {
-            //                     MessageToast.show("Study Definition is created successfully");
-            //                 }
-            //                 this.getView().getModel("uiModel").setData({
-            //                     mode: "display",
-            //                     editable: false
-            //                 }, true);
-            //             }
-            //         }.bind(this),
-            //         error: function (oError) {
-            //             alert('=E')
-            //         }
-            //     });
-            // },
-            // saveequipment: function (oEvent) {
-            //     var oPendingChanges = this._oDataModel.getPendingChanges();
-            //     var aKeys = Object.keys(oPendingChanges);
-
-            //     var object = {}
-            //     Object.assign(object, oPendingChanges[aKeys[0]])
-            //     this._oDataModel.create("/EquipmentMaster", object, {
-            //         groupId: "createChanges"
-            //     });
-            //     this._oDataModel.resetChanges();
-
-            //     this._oDataModel.submitChanges({
-            //         success: function (oData) {
-            //             var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
-            //             if (oRepsonse.statusCode < "300") {
-            //                 if (oRepsonse.statusText === "Created") {
-            //                     alert('S')
-            //                     MessageToast.show("New Study Definition is created successfully");
-            //                 } else {
-            //                     MessageToast.show("Study Definition is created successfully");
-            //                 }
-            //                 this.getView().getModel("uiModel").setData({
-            //                     mode: "display",
-            //                     editable: false
-            //                 }, true);
-            //             }
-            //         }.bind(this),
-            //         error: function (oError) {
-            //             alert('=E')
-            //         }
-            //     });
-            // },
-            // saveICD: function (oEvent) {
-            //     var oPendingChanges = this._oDataModel.getPendingChanges();
-            //     var aKeys = Object.keys(oPendingChanges);
-
-            //     var object = {}
-            //     Object.assign(object, oPendingChanges[aKeys[0]])
-            //     this._oDataModel.create("/ICDMASTER", object, {
-            //         groupId: "createChanges"
-            //     });
-            //     this._oDataModel.resetChanges();
-
-            //     this._oDataModel.submitChanges({
-            //         success: function (oData) {
-            //             var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
-            //             if (oRepsonse.statusCode < "300") {
-            //                 if (oRepsonse.statusText === "Created") {
-            //                     alert('S')
-            //                     MessageToast.show("New Study Definition is created successfully");
-            //                 } else {
-            //                     MessageToast.show("Study Definition is created successfully");
-            //                 }
-            //                 this.getView().getModel("uiModel").setData({
-            //                     mode: "display",
-            //                     editable: false
-            //                 }, true);
-            //             }
-            //         }.bind(this),
-            //         error: function (oError) {
-            //             alert('=E')
-            //         }
-            //     });
-            // },
-            // saveinstitution: function (oEvent) {
-            //     var oPendingChanges = this._oDataModel.getPendingChanges();
-            //     var aKeys = Object.keys(oPendingChanges);
-
-            //     var object = {}
-            //     Object.assign(object, oPendingChanges[aKeys[0]])
-            //     this._oDataModel.create("/INSTITUTIONMASTER", object, {
-            //         groupId: "createChanges"
-            //     });
-            //     this._oDataModel.resetChanges();
-
-            //     this._oDataModel.submitChanges({
-            //         success: function (oData) {
-            //             var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
-            //             if (oRepsonse.statusCode < "300") {
-            //                 if (oRepsonse.statusText === "Created") {
-            //                     alert('S')
-            //                     MessageToast.show("New Study Definition is created successfully");
-            //                 } else {
-            //                     MessageToast.show("Study Definition is created successfully");
-            //                 }
-            //                 this.getView().getModel("uiModel").setData({
-            //                     mode: "display",
-            //                     editable: false
-            //                 }, true);
-            //             }
-            //         }.bind(this),
-            //         error: function (oError) {
-            //             alert('=E')
-            //         }
-            //     });
-            // },
-            // saveservices: function (oEvent) {
-            //     var oPendingChanges = this._oDataModel.getPendingChanges();
-            //     var aKeys = Object.keys(oPendingChanges);
-
-            //     var object = {}
-            //     Object.assign(object, oPendingChanges[aKeys[0]])
-            //     this._oDataModel.create("/SERVICEMASTER", object, {
-            //         groupId: "createChanges"
-            //     });
-            //     this._oDataModel.resetChanges();
-
-            //     this._oDataModel.submitChanges({
-            //         success: function (oData) {
-            //             var oRepsonse = (oData.__batchResponses.length === 1) ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
-            //             if (oRepsonse.statusCode < "300") {
-            //                 if (oRepsonse.statusText === "Created") {
-            //                     alert('S')
-            //                     MessageToast.show("New Study Definition is created successfully");
-            //                 } else {
-            //                     MessageToast.show("Study Definition is created successfully");
-            //                 }
-            //                 this.getView().getModel("uiModel").setData({
-            //                     mode: "display",
-            //                     editable: false
-            //                 }, true);
-            //             }
-            //         }.bind(this),
-            //         error: function (oError) {
-            //             alert('=E')
-            //         }
-            //     });
-            // },
         });
     });
