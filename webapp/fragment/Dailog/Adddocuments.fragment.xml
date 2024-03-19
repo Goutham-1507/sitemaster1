@@ -47,7 +47,7 @@
                 <content>
                     <!-- <Button visible="{=${messageModel>/messages}.length > 0 ? true : false }" icon="sap-icon://alert" type="Critical" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" /> -->
                     <ToolbarSpacer />
-                    <Button type="Emphasized" text="Save" press=".savedocumnets" />
+                    <Button type="Emphasized" text="Save" press=".savedocumnets" visible="{=${uiModel>/formEdit} ? true : false}"/>
                     <Button text="Cancel" press=".cancel" ariaHasPopup="Dialog" />
                 </content>
             </Toolbar>
