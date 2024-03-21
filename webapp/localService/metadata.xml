@@ -59,6 +59,16 @@
                 <Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Language Code" sap:quickinfo="2-Character SAP Language Code"/>
             </EntityType>
+            <EntityType Name="I_RegionType" sap:label="Region" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Country"/>
+                    <PropertyRef Name="Region"/>
+                </Key>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Region_Text" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="Region_Text" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ProvincialTaxCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Provincial tax code"/>
+            </EntityType>
             <EntityType Name="ZDO_SCTIN_F4Type" sap:label="Search help for Service category indicator" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="domain_name"/>
@@ -273,7 +283,7 @@
                 <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address4"/>
                 <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
-                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)" sap:value-list="standard"/>
                 <Property Name="Zipcode" Type="Edm.String" MaxLength="12" sap:label="Zip code"/>
                 <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key" sap:value-list="standard"/>
                 <Property Name="OfficeTelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
@@ -670,12 +680,13 @@
                 <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zsd_sdms_master.SAP__ValueHelp" sap:content-version="1"/>
                 <EntitySet Name="I_CountryText" EntityType="cds_zsd_sdms_master.I_CountryTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_Language" EntityType="cds_zsd_sdms_master.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Region" EntityType="cds_zsd_sdms_master.I_RegionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZDO_SCTIN_F4" EntityType="cds_zsd_sdms_master.ZDO_SCTIN_F4Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="DOCUMENTMASTER" EntityType="cds_zsd_sdms_master.DOCUMENTMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="EquipmentMaster" EntityType="cds_zsd_sdms_master.EquipmentMasterType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="ICDMASTER" EntityType="cds_zsd_sdms_master.ICDMASTERType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="INSTCD" EntityType="cds_zsd_sdms_master.INSTCDType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
-                <EntitySet Name="INSTITUTIONMASTER" EntityType="cds_zsd_sdms_master.INSTITUTIONMASTERType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="INSTITUTIONMASTER" EntityType="cds_zsd_sdms_master.INSTITUTIONMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SERVICEMASTER" EntityType="cds_zsd_sdms_master.SERVICEMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SiteContactD" EntityType="cds_zsd_sdms_master.SiteContactDType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SITEMASTER" EntityType="cds_zsd_sdms_master.SITEMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
@@ -1236,6 +1247,33 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/Region" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Region"/>
+                        <PropertyValue Property="CollectionPath" String="I_Region"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Region"/>
+                                    <PropertyValue Property="ValueListProperty" String="Region"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Country"/>
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Region_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProvincialTaxCode"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1331,16 +1369,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1359,16 +1387,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1391,16 +1409,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1419,16 +1427,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1451,16 +1449,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1479,16 +1467,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1511,16 +1489,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1532,31 +1500,6 @@
                             <Collection>
                                 <Record>
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InstMaster"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Bool="false"/>
@@ -1575,16 +1518,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1612,28 +1545,8 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
                                 <PropertyPath>to_SMOContact_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1655,59 +1568,9 @@
                                             <PropertyValue Property="Insertable" Path="to_INSTContactD_oc"/>
                                         </Record>
                                     </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_INSTContactD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_INSTContactD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_INSTContactD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_INSTContactD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_INSTContactD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
                                 </Record>
                                 <Record>
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SMOContact"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SMOContact_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SMOContact_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SMOContact_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SMOContact_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SMOContact_oc"/>
-                                        </Record>
-                                    </PropertyValue>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Path="to_SMOContact_oc"/>
@@ -1726,28 +1589,8 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_INSTContactD_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
-                                <PropertyPath>to_SMOContact_oc</PropertyPath>
                                 <PropertyPath>to_SMOContact_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1799,6 +1642,23 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/I_Region" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/SERVICEMASTER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
@@ -1810,16 +1670,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1838,16 +1688,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1870,28 +1710,8 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
                                 <PropertyPath>to_SITESMOD_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1913,59 +1733,9 @@
                                             <PropertyValue Property="Insertable" Path="to_SITECONTD_oc"/>
                                         </Record>
                                     </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITECONTD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITECONTD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITECONTD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITECONTD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITECONTD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
                                 </Record>
                                 <Record>
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SITESMOD"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITESMOD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITESMOD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITESMOD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITESMOD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Path="to_SITESMOD_oc"/>
-                                        </Record>
-                                    </PropertyValue>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Path="to_SITESMOD_oc"/>
@@ -1984,28 +1754,8 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITECONTD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
-                                <PropertyPath>to_SITESMOD_oc</PropertyPath>
                                 <PropertyPath>to_SITESMOD_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2034,16 +1784,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2055,31 +1795,6 @@
                             <Collection>
                                 <Record>
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_INSTMaster"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Bool="false"/>
@@ -2098,16 +1813,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2135,16 +1840,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2156,31 +1851,6 @@
                             <Collection>
                                 <Record>
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Sitemaster"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Bool="false"/>
@@ -2199,16 +1869,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2236,16 +1896,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2257,31 +1907,6 @@
                             <Collection>
                                 <Record>
                                     <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SiteMaster"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Bool="false"/>
@@ -2300,16 +1925,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -2408,6 +2023,13 @@
                 <Annotation Term="Capabilities.UpdateRestrictions">
                     <Record>
                         <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.I_RegionType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Region"/>
                     </Record>
                 </Annotation>
             </Annotations>
