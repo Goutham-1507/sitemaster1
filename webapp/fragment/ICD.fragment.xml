@@ -1,4 +1,5 @@
-<core:FragmentDefinition xmlns:f="sap.ui.layout.form"
+<core:FragmentDefinition
+    xmlns:f="sap.ui.layout.form"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
@@ -8,23 +9,68 @@
     xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-    xmlns:u="sap.ui.unified">
-
+    xmlns:u="sap.ui.unified"
+>
     <!-- <Text text = "ello"/> -->
-    <smartVariant:SmartVariantManagement id="idICDSVM" entitySet="ICDMASTER" useFavorites="true" showShare="true" showExecuteOnSelection="true" />
-    <smartfilterbar:SmartFilterBar id="idICDSFB" entitySet="ICDMASTER" smartVariant="idICDSVM" persistencyKey="ICDSFB_key" filterChange="onFilterChange" />
-    <smartTable:SmartTable id="idICD" smartFilterId="idICDSFB" entitySet="ICDMASTER" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="true" enableAutoBinding="true" enableExport="true" header="" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" persistencyKey="ICDSFB_key" app:useSmartField="true" initiallyVisibleFields="Sitecode,Sitename,ChapterID,ChapterIDDescription,Level2,Level2Description,Level3,Level3Description,Level4,Level4Description">
+    <smartVariant:SmartVariantManagement
+        id="idICDSVM"
+        entitySet="ICDMASTER"
+        useFavorites="true"
+        showShare="true"
+        showExecuteOnSelection="true"
+    />
+    <smartfilterbar:SmartFilterBar
+        id="idICDSFB"
+        entitySet="ICDMASTER"
+        smartVariant="idICDSVM"
+        persistencyKey="ICDSFB_key"
+        filterChange="onFilterChange"
+    />
+    <smartTable:SmartTable
+        id="idICD"
+        smartFilterId="idICDSFB"
+        entitySet="ICDMASTER"
+        tableType="ResponsiveTable"
+        useVariantManagement="false"
+        useTablePersonalisation="true"
+        enableAutoBinding="true"
+        enableExport="true"
+        header=""
+        class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent"
+        persistencyKey="ICDSFB_key"
+        app:useSmartField="true"
+        initiallyVisibleFields="Sitecode,Sitename,ChapterID,ChapterIDDescription,Level2,Level2Description,Level3,Level3Description,Level4,Level4Description"
+    >
         <smartTable:customToolbar>
             <Toolbar>
                 <ToolbarSpacer />
-                <u:FileUploader buttonText="Upload Excel" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx" icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>
+                <u:FileUploader
+                    buttonText="Upload Excel"
+                    sameFilenameAllowed="true"
+                    iconOnly="false"
+                    buttonOnly="true"
+                    fileType="XLSX,xlsx"
+                    icon="sap-icon://upload"
+                    iconFirst="true"
+                    style="Emphasized"
+                    change="onUpload"
+                />
 
-                <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddICD" />
+                <Button
+                    icon="sap-icon://add"
+                    visible="{uiModel>/editable}"
+                    press="onAddICD"
+                />
             </Toolbar>
         </smartTable:customToolbar>
-        <Table id="idtbICD" itemPress="ICDDetPress" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="onDeleteTableRow">
+        <Table
+            id="idtbICD"
+            itemPress="ICDDetPress"
+            mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}"
+            delete="onDeleteTableRow"
+        >
             <items>
-                <ColumnListItem type="Active"/>
+                <ColumnListItem type="Active" />
             </items>
         </Table>
     </smartTable:SmartTable>

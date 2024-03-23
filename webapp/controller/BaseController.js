@@ -7,6 +7,7 @@ sap.ui.define([
     'sap/ui/core/library',
     "sap/m/MessageToast",
     'sap/ui/model/Filter'
+    
 ], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast, Filter) {
 
     "use strict";
@@ -31,13 +32,11 @@ sap.ui.define([
         },
         ValidateEntityData: async function (field, entity, object) {
             // `'${field}'`, 'EQ', '${object['${field}']}'
-            var filter = new Filter(
-                {
-                    path: `${field}`,
-                    operator: 'EQ',
-                    value1: object[field]
-                }
-            )
+            var filter = new Filter({
+                path: `${field}`,
+                operator: 'EQ',
+                value1: object[field]
+            })
             await this.getOwnerComponent().getModel().read(`/${entity}`, {
                 filters: [filter],
                 success: (oData) => {
@@ -89,7 +88,47 @@ sap.ui.define([
 
             debugger;
 
-            Object.assign(object, oPendingChanges[aKeys[0]])
+            // Object.assign(object, oPendingChanges[aKeys[0]])
+
+            for (var i = 0; i < aKeys.length; i++) {
+                delete oPendingChanges[aKeys[i]].__metadata;
+                switch (true) {
+                    case aKeys[i].startsWith("INSTITUTIONMASTER"):
+                        Object.assign(object, oPendingChanges[aKeys[i]]);
+                        break;
+                    case aKeys[i].startsWith("SMOContacts"):
+                        if (!object.to_SMOContact) {
+                            object["to_SMOContact"] = [];
+                        }
+                        object.to_SMOContact.push(oPendingChanges[aKeys[i]]);
+                        break;
+                    case aKeys[i].startsWith("INSTCD"):
+                        if (!object.to_INSTContactD) {
+                            object["to_INSTContactD"] = [];
+                        }
+                        object.to_INSTContactD.push(oPendingChanges[aKeys[i]]);
+                        break;
+                    case aKeys[i].startsWith("SiteContactD"):
+                        if (!object.to_SITECONTD) {
+                            object["to_SITECONTD"] = [];
+                        }
+                        object.to_SITECONTD.push(oPendingChanges[aKeys[i]]);
+                        break;
+                    case aKeys[i].startsWith("SiteSMOContacts"):
+                        if (!object.to_SITESMOD) {
+                            object["to_SITESMOD"] = [];
+                        }
+                        object.to_SITESMOD.push(oPendingChanges[aKeys[i]]);
+                        break;
+                    default:
+                        Object.assign(object, oPendingChanges[aKeys[i]]);
+                        break;
+                }
+            }
+
+
+
+
             var RPresent = await this.ValidateEntityData(entityKeyFields[this.smartTable.getEntitySet()], this.smartTable.getEntitySet(), object)
             // oDataModel.create(Entity, object, {
             //     groupId: "createChanges"
@@ -102,7 +141,7 @@ sap.ui.define([
             debugger;
             oDataModel.submitChanges({
                 success: function (oData) {
-                    var oRepsonse = (oData.__batchResponses.length > 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
+                    var oRepsonse = (oData.__batchResponses.length >= 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
                     if (oRepsonse.statusCode < "300") {
                         if (oRepsonse.statusText === "Created") {
                             MessageToast.show("Created successfully");
@@ -118,7 +157,7 @@ sap.ui.define([
                     }
                 }.bind(this),
                 error: function (oError) {
-                    sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
+                    sap.m.MessageBox.error(JSON.parse(oRepsonse.body).error.message.value);
                 }
             });
         },
@@ -130,6 +169,3 @@ sap.ui.define([
 
     });
 });
-
-
-

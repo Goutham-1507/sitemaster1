@@ -1,16 +1,16 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "./BaseController",
-    "sap/ui/core/Core",
-    "sap/ui/core/routing/History",
-    "sap/m/MessagePopover",
-    "sap/m/MessageItem",
-    "sap/ui/core/message/Message",
-    "sap/ui/core/Element",
-    "sap/m/MessageToast",
-    "sitemaster/JScripts/jszip",
-    "sitemaster/JScripts/xlsx"
-],
+        "sap/ui/core/mvc/Controller",
+        "./BaseController",
+        "sap/ui/core/Core",
+        "sap/ui/core/routing/History",
+        "sap/m/MessagePopover",
+        "sap/m/MessageItem",
+        "sap/ui/core/message/Message",
+        "sap/ui/core/Element",
+        "sap/m/MessageToast",
+        "sitemaster/JScripts/jszip",
+        "sitemaster/JScripts/xlsx"
+    ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
@@ -73,7 +73,44 @@ sap.ui.define([
             cancel: function (oEvent) {
                 oEvent.getSource().getParent().getParent().close();
             },
-            onAddinstitution: async function (oEvent) {  
+
+            onAddPress: function (oEvent) {
+                var oSmartTable = oEvent.getSource().getParent().getParent(), 
+                oTable = oSmartTable.getTable(), sId = oSmartTable.getId(), 
+                oBindingContext = oEvent.getSource().getBindingContext(), sPath = oBindingContext.getPath();
+                var oContext = this._oDataModel.createEntry(sPath + "/" + oSmartTable.getTableBindingPath());
+                var aCells = [], aColumns = oSmartTable.getInitiallyVisibleFields().split(",");
+                for (var i = 0; i < aColumns.length; i++) {
+                    // if (aColumns[i] === "DocCollection") {
+                    //     aCells.push(new sap.ui.comp.smartfield.SmartField({
+                    //         value: "{" + aColumns[i] + "}",
+                    //         configuration: new sap.ui.comp.smartfield.Configuration({
+                    //             controlType: "checkBox"
+                    //         })
+                    //     }));
+                    // } else {
+                        aCells.push(new sap.ui.comp.smartfield.SmartField({
+                            mandatory: true,
+                            value: "{" + aColumns[i] + "}"
+                        }));
+                    // }
+                }
+                // if (oTable instanceof sap.m.Table) {
+                var oItem = new sap.m.ColumnListItem({
+                    cells: aCells
+                });
+                oItem.setBindingContext(oContext);
+                oTable.insertItem(oItem, oTable.getItems().length);
+            },
+            DelRecord: function (oEvent) {
+                var oItem = oEvent.getParameter("listItem"), sPath = oItem.getBindingContextPath(), oTable = oItem.getParent();
+                // this._oDataModel.remove(sPath, {
+                //     groupId: "deleteChanges"
+                // });
+                oTable.removeItem(oItem);
+                // oTable.getParent().setHeader(["Contacts", " (", oTable.getItems().length, ")"].join(""));
+            },
+            onAddinstitution: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');

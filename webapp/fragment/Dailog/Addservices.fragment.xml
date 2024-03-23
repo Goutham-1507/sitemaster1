@@ -19,12 +19,6 @@
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
             <smartForm:Group>
-                <!-- <smartForm:GroupElement>
-                    <smartField:SmartField value="{SitemasterRef}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{ServicecatRef}" />
-                </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>

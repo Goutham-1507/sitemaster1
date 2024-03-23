@@ -68,31 +68,31 @@
                     </smartForm:GroupElement>
                 </smartForm:Group>
             </smartForm:SmartForm>
-<Title level="Auto" text="Communication">  </Title>
+            <Title level="H1" text="Communication" class = "sapUiSmallMarginBegin" ></Title>
 
-                <smartTable:SmartTable id="SMOContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_StudyRegion" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="SMO Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/editable}" app:useSmartField="true" initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID">
-                    <smartTable:customToolbar>
-                        <Toolbar>
-                            <ToolbarSpacer />
-                            <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddPress" />
-                        </Toolbar>
-                    </smartTable:customToolbar>
-                    <Table id="SMOContactDetails" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="onDeleteTableRow"/>
-                </smartTable:SmartTable>
+            <smartTable:SmartTable id="SMOContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_SMOContact" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="SMO Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/editable}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,CreatedBy,CreatedOn,ChangedBy,ChangedOn,DeleteIndicator"  initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID,Remarks">
+                <smartTable:customToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddPress" />
+                    </Toolbar>
+                </smartTable:customToolbar>
+                <Table id="SMOContactDetails" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="DelRecord"/>
+            </smartTable:SmartTable>
 
-                <smartTable:SmartTable id="InstitutionContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_StudyRegion" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="Institution Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/editable}" app:useSmartField="true" initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID">
-                    <smartTable:customToolbar>
-                        <Toolbar>
-                            <ToolbarSpacer />
-                            <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddPress" />
-                        </Toolbar>
-                    </smartTable:customToolbar>
-                    <Table id="InstitutionContactDetails" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="onDeleteTableRow"/>
-                </smartTable:SmartTable>
+            <smartTable:SmartTable id="InstitutionContactDetailsTable" entitySet="INSTCD" tableBindingPath="to_INSTContactD" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="Institution Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/editable}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,Createdby,Createdon,Changedby,Changedon,Deleteind,Remarks" initiallyVisibleFields="ContactName,Role,Officetelephone,Extension,MobileNum,Email,Remarks">
+                <smartTable:customToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddPress" />
+                    </Toolbar>
+                </smartTable:customToolbar>
+                <Table id="InstitutionContactDetails" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="onDeleteTableRow"/>
+            </smartTable:SmartTable>
 
 
-         
-            
+
+
             <smartForm:SmartForm validationMode="Async" title="Notes" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
                 <smartForm:layout>
                     <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />

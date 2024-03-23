@@ -1,4 +1,5 @@
-<core:FragmentDefinition xmlns:f="sap.ui.layout.form"
+<core:FragmentDefinition
+    xmlns:f="sap.ui.layout.form"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
@@ -8,23 +9,60 @@
     xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-    xmlns:u="sap.ui.unified">
-
+    xmlns:u="sap.ui.unified"
+>
     <!-- <Text text = "ello"/> -->
-    <smartVariant:SmartVariantManagement id="idInstitutionSVM" entitySet="INSTITUTIONMASTER" useFavorites="true" showShare="true" showExecuteOnSelection="true" />
-    <smartfilterbar:SmartFilterBar id="idInstitutionSFB" entitySet="INSTITUTIONMASTER" smartVariant="idInstitutionSVM" persistencyKey="InstitutionSFB_key" filterChange="onFilterChange" />
-    <smartTable:SmartTable id="idInstitution" entitySet="INSTITUTIONMASTER" smartFilterId="idInstitutionSFB" tableType="ResponsiveTable" useVariantManagement="true" useTablePersonalisation="true" enableAutoBinding="true" enableExport="true" header="" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" persistencyKey="InstitutionSFB_key" app:useSmartField="true" initiallyVisibleFields="InstitutionCode,InstitutionName,Country,Region,City">
+    <smartVariant:SmartVariantManagement
+        id="idInstitutionSVM"
+        entitySet="INSTITUTIONMASTER"
+        useFavorites="true"
+        showShare="true"
+        showExecuteOnSelection="true"
+    />
+    <smartfilterbar:SmartFilterBar
+        id="idInstitutionSFB"
+        enableBasicSearch="true"
+        entitySet="INSTITUTIONMASTER"
+        smartVariant="idInstitutionSVM"
+        persistencyKey="InstitutionSFB_key"
+        filterChange="onFilterChange"
+    />
+    <smartTable:SmartTable
+        id="idInstitution"
+        entitySet="INSTITUTIONMASTER"
+        smartFilterId="idInstitutionSFB"
+        tableType="ResponsiveTable"
+        useVariantManagement="true"
+        useTablePersonalisation="true"
+        enableAutoBinding="true"
+        enableExport="true"
+        header=""
+        class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent"
+        persistencyKey="InstitutionSFB_key"
+        app:useSmartField="true"
+        requestAtLeastFields="Guid"
+        initiallyVisibleFields="language,InstitutionCode,InstitutionName"
+    >
         <smartTable:customToolbar>
             <Toolbar>
                 <ToolbarSpacer />
-                <u:FileUploader buttonText="Upload Excel" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx" icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>
-
-                <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddinstitution" />
+                <!-- <u:FileUploader buttonText="Upload Excel" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx" icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/> -->
+                <Button
+                    icon="sap-icon://add"
+                    visible="{uiModel>/editable}"
+                    press="onAddinstitution"
+                />
             </Toolbar>
         </smartTable:customToolbar>
-        <Table id="idtbInstitution" itemPress="institutionDetPress" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="onDeleteTableRow">
+        <Table
+            id="idtbInstitution"
+            itemPress="institutionDetPress"
+            mode="{= (${uiModel>/editable} ? 'Delete' : 'None')
+                   }"
+            delete="onDeleteTableRow"
+        >
             <items>
-                <ColumnListItem type="Active"/>
+                <ColumnListItem type="Active" />
             </items>
         </Table>
     </smartTable:SmartTable>
