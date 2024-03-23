@@ -75,11 +75,14 @@ sap.ui.define([
             },
 
             onAddPress: function (oEvent) {
-                var oSmartTable = oEvent.getSource().getParent().getParent(), 
-                oTable = oSmartTable.getTable(), sId = oSmartTable.getId(), 
-                oBindingContext = oEvent.getSource().getBindingContext(), sPath = oBindingContext.getPath();
+                var oSmartTable = oEvent.getSource().getParent().getParent(),
+                    oTable = oSmartTable.getTable(),
+                    sId = oSmartTable.getId(),
+                    oBindingContext = oEvent.getSource().getBindingContext(),
+                    sPath = oBindingContext.getPath();
                 var oContext = this._oDataModel.createEntry(sPath + "/" + oSmartTable.getTableBindingPath());
-                var aCells = [], aColumns = oSmartTable.getInitiallyVisibleFields().split(",");
+                var aCells = [],
+                    aColumns = oSmartTable.getInitiallyVisibleFields().split(",");
                 for (var i = 0; i < aColumns.length; i++) {
                     // if (aColumns[i] === "DocCollection") {
                     //     aCells.push(new sap.ui.comp.smartfield.SmartField({
@@ -89,10 +92,10 @@ sap.ui.define([
                     //         })
                     //     }));
                     // } else {
-                        aCells.push(new sap.ui.comp.smartfield.SmartField({
-                            mandatory: true,
-                            value: "{" + aColumns[i] + "}"
-                        }));
+                    aCells.push(new sap.ui.comp.smartfield.SmartField({
+                        mandatory: true,
+                        value: "{" + aColumns[i] + "}"
+                    }));
                     // }
                 }
                 // if (oTable instanceof sap.m.Table) {
@@ -103,7 +106,9 @@ sap.ui.define([
                 oTable.insertItem(oItem, oTable.getItems().length);
             },
             DelRecord: function (oEvent) {
-                var oItem = oEvent.getParameter("listItem"), sPath = oItem.getBindingContextPath(), oTable = oItem.getParent();
+                var oItem = oEvent.getParameter("listItem"),
+                    sPath = oItem.getBindingContextPath(),
+                    oTable = oItem.getParent();
                 // this._oDataModel.remove(sPath, {
                 //     groupId: "deleteChanges"
                 // });
@@ -445,15 +450,22 @@ sap.ui.define([
                             type: 'binary'
                         });
                         var oDataModel = that._oDataModel;
-                        workbook.SheetNames.forEach(function (sheetName) {
-                            // Here is your object for every sheet in workbook
-                            excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-                            excelData.forEach(ele => {
-                                var json = JSON.parse(JSON.stringify(ele));
-                                oDataModel.create(`/${that.excelEntity}`, json, {
-                                    groupId: "createChanges"
-                                });
+                        var sheetName = workbook.SheetNames[0];
+                        excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                        excelData.forEach(ele => {
+                            var json = JSON.parse(JSON.stringify(ele));
+                            oDataModel.create(`/${that.excelEntity}`, json, {
+                                groupId: "createChanges"
                             });
+                            // workbook.SheetNames.forEach(function (sheetName) {
+                            //     // Here is your object for every sheet in workbook
+                            //     excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                            //     excelData.forEach(ele => {
+                            //         var json = JSON.parse(JSON.stringify(ele));
+                            //         oDataModel.create(`/${that.excelEntity}`, json, {
+                            //             groupId: "createChanges"
+                            //         });
+                            //     });
                             that.oDataSubmitChanges(oDataModel);
                         });
                     };
