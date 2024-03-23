@@ -147,6 +147,7 @@ sap.ui.define([
                             MessageToast.show("Created successfully");
                         } else {
                             MessageToast.show("Updated successfully");
+                            
                         }
                         this.smartTable.rebindTable();
                         oEvent && oEvent.getSource().getParent().getParent().close();
@@ -154,6 +155,9 @@ sap.ui.define([
                         //     mode: "display",
                         //     editable: false
                         // }, true);
+                    }
+                    else{
+                        sap.m.MessageBox.error(JSON.parse(oRepsonse.body).error.message.value);
                     }
                 }.bind(this),
                 error: function (oError) {
