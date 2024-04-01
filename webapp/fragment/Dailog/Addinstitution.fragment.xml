@@ -68,26 +68,26 @@
                     </smartForm:GroupElement>
                 </smartForm:Group>
             </smartForm:SmartForm>
-            <Title level="H1" text="Communication" class = "sapUiSmallMarginBegin" ></Title>
+            <Title level="H1" text="Communication" class = "sapUiSmallMarginBegin"></Title>
 
-            <smartTable:SmartTable id="SMOContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_SMOContact" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="SMO Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/editable}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,CreatedBy,CreatedOn,ChangedBy,ChangedOn,DeleteIndicator"  initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID,Remarks">
+            <smartTable:SmartTable id="SMOContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_SMOContact" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="SMO Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/formEdit}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,CreatedBy,CreatedOn,ChangedBy,ChangedOn,DeleteIndicator" initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID,Remarks">
                 <smartTable:customToolbar>
                     <Toolbar>
                         <ToolbarSpacer />
-                        <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddPress" />
+                        <Button icon="sap-icon://add" visible="{uiModel>/formEdit}" press="onAddPress" />
                     </Toolbar>
                 </smartTable:customToolbar>
-                <Table id="SMOContactDetails" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="DelRecord"/>
+                <Table id="SMOContactDetails" mode="{= ${uiModel>/formEdit} ? 'Delete' : 'None'}" delete="DelRecord"/>
             </smartTable:SmartTable>
 
-            <smartTable:SmartTable id="InstitutionContactDetailsTable" entitySet="INSTCD" tableBindingPath="to_INSTContactD" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="Institution Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/editable}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,Createdby,Createdon,Changedby,Changedon,Deleteind,Remarks" initiallyVisibleFields="ContactName,Role,Officetelephone,Extension,MobileNum,Email,Remarks">
+            <smartTable:SmartTable id="InstitutionContactDetailsTable" entitySet="INSTCD" tableBindingPath="to_INSTContactD" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="Institution Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/formEdit}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,Createdby,Createdon,Changedby,Changedon,Deleteind,Remarks" initiallyVisibleFields="ContactName,Role,Officetelephone,Extension,MobileNum,Email,Remarks">
                 <smartTable:customToolbar>
                     <Toolbar>
                         <ToolbarSpacer />
-                        <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddPress" />
+                        <Button icon="sap-icon://add" visible="{uiModel>/formEdit}" press="onAddPress" />
                     </Toolbar>
                 </smartTable:customToolbar>
-                <Table id="InstitutionContactDetails" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')}" delete="onDeleteTableRow"/>
+                <Table id="InstitutionContactDetails" mode="{= ${uiModel>/formEdit} ? 'Delete' : 'None'}" delete="onDeleteTableRow"/>
             </smartTable:SmartTable>
 
 
@@ -99,7 +99,7 @@
                 </smartForm:layout>
                 <smartForm:Group>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Remarks}" editable = "{uiModel>/formEdit}"/>
+                        <smartField:SmartField value="{Remarks}" app:multiLineSettings="{cols: 100, rows: 5}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
                 </smartForm:Group>
             </smartForm:SmartForm>

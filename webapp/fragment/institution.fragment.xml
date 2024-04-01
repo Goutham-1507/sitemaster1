@@ -21,7 +21,7 @@
             </Toolbar>
         </smartTable:customToolbar>
         <Table id="idtbInstitution" itemPress="institutionDetPress" mode="{= (${uiModel>/editable} ? 'Delete' : 'None')
-                   }" delete="onDeleteTableRow">
+               }" delete="onDeleteTableRow">
             <items>
                 <ColumnListItem type="Active" />
             </items>

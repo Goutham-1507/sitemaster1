@@ -117,6 +117,7 @@ sap.ui.define([
             },
             onAddinstitution: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
+                this.editMode = true;
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 that = this;
@@ -132,6 +133,7 @@ sap.ui.define([
             },
             institutionDetPress: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
+                this.editMode = false;
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 var dinstitution = this.mDialogs['Institution'];
@@ -141,8 +143,12 @@ sap.ui.define([
                 dinstitution.then(function (pDialog) {
                     debugger;
                     sap.ui.core.BusyIndicator.hide();
+                    pDialog.unbindObject();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
+                        parameters: {
+                            expand: "to_SMOContact,to_INSTContactD"
+                        },
                         events: {
                             dataRequested: function (oEvent) {
                                 oView.setBusy(true);
@@ -319,6 +325,7 @@ sap.ui.define([
 
             },
             onAddSites: async function (oEvent) {
+                this.editMode = true;
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
                 await this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
@@ -334,6 +341,7 @@ sap.ui.define([
 
             },
             sitesDetPress: function (oEvent) {
+                this.editMode = false;
                 this.smartTable = oEvent.getSource().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
                 this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
@@ -344,8 +352,12 @@ sap.ui.define([
                 dsites.then(function (pDialog) {
                     debugger;
                     sap.ui.core.BusyIndicator.hide();
+                    pDialog.unbindObject();
                     pDialog.bindElement({
                         path: `${oEvent.getParameter('listItem').getBindingContextPath()}`,
+                        parameters: {
+                            expand: "to_SITESMOD,to_SITECONTD"
+                        },
                         events: {
                             dataRequested: function (oEvent) {
                                 oView.setBusy(true);

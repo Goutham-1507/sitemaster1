@@ -7,7 +7,7 @@ sap.ui.define([
     'sap/ui/core/library',
     "sap/m/MessageToast",
     'sap/ui/model/Filter'
-    
+
 ], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast, Filter) {
 
     "use strict";
@@ -28,7 +28,7 @@ sap.ui.define([
             entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = "ChapterID";
             entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = "InstitutionCode";
             entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = "ServiceCode";
-            entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = "InstitutionCode";
+            entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = "SiteCode";
         },
         ValidateEntityData: async function (field, entity, object) {
             // `'${field}'`, 'EQ', '${object['${field}']}'
@@ -89,12 +89,13 @@ sap.ui.define([
             debugger;
 
             // Object.assign(object, oPendingChanges[aKeys[0]])
-
+            var InsSiteEntity = "";
             for (var i = 0; i < aKeys.length; i++) {
                 delete oPendingChanges[aKeys[i]].__metadata;
                 switch (true) {
                     case aKeys[i].startsWith("INSTITUTIONMASTER"):
                         Object.assign(object, oPendingChanges[aKeys[i]]);
+                        InsSiteEntity = "/INSTITUTIONMASTER"
                         break;
                     case aKeys[i].startsWith("SMOContacts"):
                         if (!object.to_SMOContact) {
@@ -107,6 +108,10 @@ sap.ui.define([
                             object["to_INSTContactD"] = [];
                         }
                         object.to_INSTContactD.push(oPendingChanges[aKeys[i]]);
+                        break;
+                    case aKeys[i].startsWith("SITEMASTER"):
+                        Object.assign(object, oPendingChanges[aKeys[i]]);
+                        InsSiteEntity = "/SITEMASTER"
                         break;
                     case aKeys[i].startsWith("SiteContactD"):
                         if (!object.to_SITECONTD) {
@@ -127,7 +132,12 @@ sap.ui.define([
             }
 
 
-
+            if (InsSiteEntity.length > 0 && this.editMode) {
+                oDataModel.create(InsSiteEntity, object, {
+                    groupId: "createChanges"
+                });
+                oDataModel.resetChanges();
+            }
 
             var RPresent = await this.ValidateEntityData(entityKeyFields[this.smartTable.getEntitySet()], this.smartTable.getEntitySet(), object)
             // oDataModel.create(Entity, object, {
@@ -147,7 +157,7 @@ sap.ui.define([
                             MessageToast.show("Created successfully");
                         } else {
                             MessageToast.show("Updated successfully");
-                            
+
                         }
                         this.smartTable.rebindTable();
                         oEvent && oEvent.getSource().getParent().getParent().close();
@@ -155,8 +165,7 @@ sap.ui.define([
                         //     mode: "display",
                         //     editable: false
                         // }, true);
-                    }
-                    else{
+                    } else {
                         sap.m.MessageBox.error(JSON.parse(oRepsonse.body).error.message.value);
                     }
                 }.bind(this),
