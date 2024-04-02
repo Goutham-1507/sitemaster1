@@ -42,7 +42,7 @@ sap.ui.define([
                 success: (oData) => {
                     // debugger;
                     if (oData.results.length !== 0) {
-                        MessageToast.show('Key field already exists');
+                        MessageToast.show('An entry already exist with the same code');
                     } else {
                         this.oDataSubmitChanges(this._oDataModel, this.oEvent);
                     }

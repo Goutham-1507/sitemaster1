@@ -16,7 +16,7 @@
         <smartTable:customToolbar>
             <Toolbar>
                 <ToolbarSpacer />
-                <u:FileUploader tooltip="Upload Excel" sameFilenameAllowed="true" iconOnly="true" buttonOnly="true" fileType="XLSX,xlsx" icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload" />
+                <u:FileUploader tooltip="Upload Excel" sameFilenameAllowed="true" iconOnly="true" buttonOnly="true" fileType="XLSX,xlsx" icon="sap-icon://upload" iconFirst="true" change="onUpload" />
 
                 <Button icon="sap-icon://add" visible="{uiModel>/editable}" press="onAddICD" />
             </Toolbar>
