@@ -119,6 +119,7 @@ sap.ui.define([
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.editMode = true;
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
+                this.getView().getModel('uiModel').setProperty('/mode',"create");
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 that = this;
                 var dinstitution = this.mDialogs['Institution'];
@@ -135,6 +136,7 @@ sap.ui.define([
                 this.smartTable = oEvent.getSource().getParent();
                 this.editMode = false;
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
+                this.getView().getModel('uiModel').setProperty('/mode',"display");
                 await this.openDialog('Institution', 'sitemaster.fragment.Dailog.Addinstitution');
                 var dinstitution = this.mDialogs['Institution'];
                 that = this;
@@ -166,6 +168,7 @@ sap.ui.define([
             onAdddocuments: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
+                this.getView().getModel('uiModel').setProperty('/mode',"create");
                 await this.openDialog('Document', 'sitemaster.fragment.Dailog.Adddocuments');
                 that = this;
                 var ddocument = this.mDialogs['Document'];
@@ -181,6 +184,7 @@ sap.ui.define([
             documentsDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
+                this.getView().getModel('uiModel').setProperty('/mode',"display");
                 this.openDialog('Document', 'sitemaster.fragment.Dailog.Adddocuments');
                 var ddocument = this.mDialogs['Document'];
                 that = this;
@@ -206,6 +210,7 @@ sap.ui.define([
             onAddequipment: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
+                this.getView().getModel('uiModel').setProperty('/mode',"create");
                 await this.openDialog('Equipment', 'sitemaster.fragment.Dailog.Addequipment');
                 that = this;
                 var dequipment = this.mDialogs['Equipment'];
@@ -221,6 +226,7 @@ sap.ui.define([
             equipmentDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
+                this.getView().getModel('uiModel').setProperty('/mode',"display");
                 this.openDialog('Equipment', 'sitemaster.fragment.Dailog.Addequipment');
                 var dequipment = this.mDialogs['Equipment'];
                 that = this;
@@ -246,6 +252,7 @@ sap.ui.define([
             onAddICD: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
+                this.getView().getModel('uiModel').setProperty('/mode',"create");
                 await this.openDialog('ICD', 'sitemaster.fragment.Dailog.AddICD');
                 that = this;
                 var dICD = this.mDialogs['ICD'];
@@ -261,6 +268,7 @@ sap.ui.define([
             ICDDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
+                this.getView().getModel('uiModel').setProperty('/mode',"display");
                 this.openDialog('ICD', 'sitemaster.fragment.Dailog.AddICD');
                 var dICD = this.mDialogs['ICD'];
                 that = this;
@@ -287,6 +295,7 @@ sap.ui.define([
             onAddServices: async function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
+                this.getView().getModel('uiModel').setProperty('/mode',"create");
                 await this.openDialog('Services', 'sitemaster.fragment.Dailog.Addservices');
                 that = this;
                 var dservices = this.mDialogs['Services'];
@@ -302,6 +311,7 @@ sap.ui.define([
             servicesDetPress: function (oEvent) {
                 this.smartTable = oEvent.getSource().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
+                this.getView().getModel('uiModel').setProperty('/mode',"display");
                 this.openDialog('Services', 'sitemaster.fragment.Dailog.Addservices');
                 var dservices = this.mDialogs['Services'];
                 that = this;
@@ -328,6 +338,7 @@ sap.ui.define([
                 this.editMode = true;
                 this.smartTable = oEvent.getSource().getParent().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', true);
+                this.getView().getModel('uiModel').setProperty('/mode',"create");
                 await this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
                 that = this;
                 var dsites = this.mDialogs['Sites'];
@@ -344,6 +355,7 @@ sap.ui.define([
                 this.editMode = false;
                 this.smartTable = oEvent.getSource().getParent();
                 this.getView().getModel('uiModel').setProperty('/formEdit', false);
+                this.getView().getModel('uiModel').setProperty('/mode',"display");
                 this.openDialog('Sites', 'sitemaster.fragment.Dailog.Addsites');
                 var dsites = this.mDialogs['Sites'];
                 that = this;

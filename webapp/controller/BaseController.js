@@ -175,8 +175,9 @@ sap.ui.define([
             });
         },
         toggleEdit: function (oEvent) {
+            var  mode = this.getView().getModel('uiModel').getProperty('/mode')
             this.getView().getModel('uiModel').setProperty('/formEdit', !this.getView().getModel('uiModel').getProperty('/formEdit'));
-
+            this.getView().getModel('uiModel').setProperty('/mode', mode === 'display' ? "edit" : "display");
         }
 
 

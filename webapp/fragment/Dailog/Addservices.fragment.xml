@@ -8,7 +8,7 @@
     <customHeader>
             <Toolbar>
                 <content>
-                    <Title text ="{i18n>Addservices}"></Title>
+                    <Title text ="{= ${uiModel>/mode} === 'create' ? ${i18n>Addservices} : ${uiModel>/mode} === 'edit' ? ${i18n>Editservices} : ${i18n>Displayservices} }"></Title>
                     <ToolbarSpacer/>
                     <Button icon = "{=${uiModel>/formEdit} ? 'sap-icon://display' : 'sap-icon://edit'}" press = "toggleEdit"></Button>
                 </content>
