@@ -20,25 +20,25 @@
             </smartForm:layout>
             <smartForm:Group>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{ShortName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Languagekey}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{Languagekey}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{ServiceCode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
             	<smartForm:GroupElement>
                     <smartField:SmartField value="{ServiceDescription}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{ServiceCategoryIndicator}" editable = "{uiModel>/formEdit}"/>

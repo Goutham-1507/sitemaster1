@@ -20,7 +20,7 @@
             </smartForm:layout>
             <smartForm:Group>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}" />
+                    <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{sitecode}" editable = "{uiModel>/formEdit}"/>
@@ -38,7 +38,7 @@
                     <smartField:SmartField value="{Documentdescription}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Default1}" editable = "{uiModel>/formEdit}"/>

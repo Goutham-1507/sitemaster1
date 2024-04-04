@@ -21,7 +21,7 @@
                 </smartForm:layout>
                 <smartForm:Group>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}"/>
+                        <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
                         <smartField:SmartField value="{SiteCode}" editable = "{uiModel>/formEdit}"/>
@@ -30,7 +30,7 @@
                         <smartField:SmartField value="{SiteName}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{InstitutionCode}" editable = "{uiModel>/formEdit}"/>
+                        <smartField:SmartField value="{InstitutionCode}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                     </smartForm:GroupElement>
 
                 </smartForm:Group>
@@ -59,10 +59,10 @@
                         <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Country}" editable = "{uiModel>/formEdit}"/>
+                        <smartField:SmartField value="{Country}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Region}" editable = "{uiModel>/formEdit}"/>
+                        <smartField:SmartField value="{Region}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
                         <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>
