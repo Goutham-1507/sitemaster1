@@ -23,7 +23,7 @@
                     <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{ShortName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Languagekey}" editable = "{uiModel>/formEdit}"/>
@@ -32,7 +32,7 @@
                     <smartField:SmartField value="{ServiceCode}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{ShortName}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
             	<smartForm:GroupElement>
                     <smartField:SmartField value="{ServiceDescription}" editable = "{uiModel>/formEdit}"/>

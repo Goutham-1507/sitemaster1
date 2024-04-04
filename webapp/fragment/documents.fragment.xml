@@ -12,7 +12,7 @@
     <!-- <Text text = "ello"/> -->
     <smartVariant:SmartVariantManagement id="idDocumentSVM" entitySet="DOCUMENTMASTER" useFavorites="true" showShare="true" showExecuteOnSelection="true" />
     <smartfilterbar:SmartFilterBar id="idDocumentSFB" entitySet="DOCUMENTMASTER" smartVariant="idDocumentSVM" persistencyKey="DocumentSFB_key" filterChange="onFilterChange" />
-    <smartTable:SmartTable id="idDocument" smartFilterId="idDocumentSFB" entitySet="DOCUMENTMASTER" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="true" enableAutoBinding="true" enableExport="true" header="" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" persistencyKey="DocumentSFB_key" app:useSmartField="true" ignoreFromPersonalisation="Guid,SitemasterRef,DocumentcatRef," initiallyVisibleFields="Language,sitecode,sitename,DocumentID,Shortname,Documentdescription,Category,Default1">
+    <smartTable:SmartTable id="idDocument" smartFilterId="idDocumentSFB" entitySet="DOCUMENTMASTER" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="true" enableAutoBinding="true" enableExport="true" header="" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" persistencyKey="DocumentSFB_key" app:useSmartField="true" ignoreFromPersonalisation="Guid,SitemasterRef,DocumentcatRef," initiallyVisibleFields="sitecode,sitename,DocumentID,Shortname,Documentdescription,Category,Default1">
         <smartTable:customToolbar>
             <Toolbar>
                 <ToolbarSpacer />

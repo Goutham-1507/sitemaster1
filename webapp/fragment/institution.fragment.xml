@@ -12,7 +12,7 @@
     <!-- <Text text = "ello"/> -->
     <smartVariant:SmartVariantManagement id="idInstitutionSVM" entitySet="INSTITUTIONMASTER" useFavorites="true" showShare="true" showExecuteOnSelection="true" />
     <smartfilterbar:SmartFilterBar id="idInstitutionSFB" enableBasicSearch="true" entitySet="INSTITUTIONMASTER" smartVariant="idInstitutionSVM" persistencyKey="InstitutionSFB_key" filterChange="onFilterChange" />
-    <smartTable:SmartTable id="idInstitution" entitySet="INSTITUTIONMASTER" smartFilterId="idInstitutionSFB" tableType="ResponsiveTable" useVariantManagement="true" useTablePersonalisation="true" enableAutoBinding="true" enableExport="true" header="" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" persistencyKey="InstitutionSFB_key" app:useSmartField="true" requestAtLeastFields="Guid" ignoreFromPersonalisation="RefrencedBy,Guid" initiallyVisibleFields="language,InstitutionCode,InstitutionName">
+    <smartTable:SmartTable id="idInstitution" entitySet="INSTITUTIONMASTER" smartFilterId="idInstitutionSFB" tableType="ResponsiveTable" useVariantManagement="true" useTablePersonalisation="true" enableAutoBinding="true" enableExport="true" header="" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" persistencyKey="InstitutionSFB_key" app:useSmartField="true" requestAtLeastFields="Guid" ignoreFromPersonalisation="RefrencedBy,Guid" initiallyVisibleFields="InstitutionCode,InstitutionName">
         <smartTable:customToolbar>
             <Toolbar>
                 <ToolbarSpacer />
