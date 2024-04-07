@@ -26,7 +26,7 @@
 					<smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
-					<smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
+					<smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} ? false : false }" textInEditModeSource="ValueList"/>
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
 					<smartField:SmartField value="{ChapterID}" editable = "{uiModel>/formEdit}"/>

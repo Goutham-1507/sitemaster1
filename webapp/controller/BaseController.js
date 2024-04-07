@@ -32,6 +32,7 @@ sap.ui.define([
         },
         ValidateEntityData: async function (field, entity, object) {
             // `'${field}'`, 'EQ', '${object['${field}']}'
+            if(field){
             var filter = new Filter({
                 path: `${field}`,
                 operator: 'EQ',
@@ -50,7 +51,10 @@ sap.ui.define([
                 error: (oData) => {
                     debugger;
                 }
-            })
+            })}
+            else{
+                this.oDataSubmitChanges(this._oDataModel, this.oEvent);
+            }
 
         },
         openDialog: function (name, path) {

@@ -109,9 +109,9 @@ sap.ui.define([
                 var oItem = oEvent.getParameter("listItem"),
                     sPath = oItem.getBindingContextPath(),
                     oTable = oItem.getParent();
-                // this._oDataModel.remove(sPath, {
-                //     groupId: "deleteChanges"
-                // });
+                this._oDataModel.remove(sPath, {
+                    groupId: "deleteChanges"
+                });
                 oTable.removeItem(oItem);
                 // oTable.getParent().setHeader(["Contacts", " (", oTable.getItems().length, ")"].join(""));
             },
@@ -160,6 +160,10 @@ sap.ui.define([
                             }.bind(this)
                         }
                     })
+
+                    if (pDialog.getBindingContext()) {
+                        pDialog.getBindingContext().getModel().refresh();
+                    }
                 })
 
 
@@ -379,6 +383,9 @@ sap.ui.define([
                             }.bind(this)
                         }
                     })
+                    if (pDialog.getBindingContext()) {
+                        pDialog.getBindingContext().getModel().refresh();
+                    }
                 })
 
             },

@@ -39,17 +39,34 @@
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="cds_zsd_sdms_master" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="I_CountryTextType" sap:label="Country/Region - Text" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="I_CountryType" sap:label="Country/Region" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Country"/>
-                    <PropertyRef Name="Language"/>
                 </Key>
-                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
-                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
-                <Property Name="CountryName" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name"/>
-                <Property Name="NationalityName" Type="Edm.String" MaxLength="15" sap:label="Nationality"/>
-                <Property Name="NationalityLongName" Type="Edm.String" MaxLength="50" sap:label="Nationality (Long)" sap:quickinfo="Nationality (Max. 50 Characters)"/>
-                <Property Name="CountryShortName" Type="Edm.String" MaxLength="15" sap:label="Country/Region Name" sap:quickinfo="Name of Country/Region (Short)"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Country_Text" sap:label="Country/Region Key"/>
+                <Property Name="Country_Text" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code 3 Char" sap:quickinfo="ISO Country/Region Code 3 Characters"/>
+                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="ISO Code Num. 3" sap:quickinfo="ISO Country/Region Code Numeric 3-Characters"/>
+                <Property Name="CountryISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="ISO code" sap:quickinfo="ISO Code of the Country/Region"/>
+                <Property Name="IsEuropeanUnionMember" Type="Edm.Boolean" sap:label="EU Member" sap:quickinfo="Indicator: European Union Member?"/>
+                <Property Name="BankAndBankInternalIDCheckRule" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Bank Key" sap:quickinfo="Name of the Bank Key"/>
+                <Property Name="BankInternalIDLength" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Bank Account Number Length"/>
+                <Property Name="BankInternalIDCheckRule" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Rule For Checking Bank Account Number" sap:quickinfo="Rule For Checking Bank Account Number Field"/>
+                <Property Name="BankNumberLength" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Bank Number Length"/>
+                <Property Name="BankCheckRule" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Rule For Checking Bank Number" sap:quickinfo="Rule For Checking Bank Number Field"/>
+                <Property Name="BankAccountLength" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Length of Bank Key"/>
+                <Property Name="BankPostalCheckRule" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Rule For Checking Bank Key" sap:quickinfo="Rule For Checking Bank Key Field"/>
+                <Property Name="BankDataCheckIsCountrySpecific" Type="Edm.Boolean" sap:label="Indicator: Use Check Module For Bank" sap:quickinfo="Indicator: Use Check Module For Bank Fields ?"/>
+            </EntityType>
+            <EntityType Name="I_CountryVHType" sap:label="Country/Region" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Country"/>
+                </Key>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Country_Text" sap:label="Country/Region Key"/>
+                <Property Name="Country_Text" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name"/>
+                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code 3 Char" sap:quickinfo="ISO Country/Region Code 3 Characters"/>
+                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="ISO Code Num. 3" sap:quickinfo="ISO Country/Region Code Numeric 3-Characters"/>
             </EntityType>
             <EntityType Name="I_LanguageType" sap:label="Language" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -59,7 +76,7 @@
                 <Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Language Code" sap:quickinfo="2-Character SAP Language Code"/>
             </EntityType>
-            <EntityType Name="I_RegionType" sap:label="Region" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="I_RegionVHType" sap:label="Region" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Country"/>
                     <PropertyRef Name="Region"/>
@@ -67,19 +84,6 @@
                 <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
                 <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Region_Text" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
                 <Property Name="Region_Text" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ProvincialTaxCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Provincial tax code"/>
-            </EntityType>
-            <EntityType Name="ZDO_SCTIN_F4Type" sap:label="Search help for Service category indicator" sap:value-list="true" sap:content-version="1">
-                <Key>
-                    <PropertyRef Name="domain_name"/>
-                    <PropertyRef Name="value_position"/>
-                    <PropertyRef Name="language"/>
-                </Key>
-                <Property Name="domain_name" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Domain name"/>
-                <Property Name="value_position" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Value key" sap:quickinfo="Domain value key"/>
-                <Property Name="language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Lang." sap:quickinfo="Language Key"/>
-                <Property Name="value_low" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
-                <Property Name="text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
             </EntityType>
             <EntityType Name="DOCUMENTMASTERType" sap:label="Consumption View of Document Master" sap:content-version="1">
                 <Key>
@@ -88,21 +92,22 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="DocumentcatRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="SitemasterRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="DocumentcatRef" Type="Edm.Guid" sap:label="DocumentcatRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:value-list="standard"/>
-                <Property Name="sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:value-list="standard"/>
-                <Property Name="DocumentID" Type="Edm.String" MaxLength="10" sap:label="Document ID"/>
+                <Property Name="SiteCode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:value-list="standard"/>
+                <Property Name="SiteName" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:value-list="standard"/>
+                <Property Name="DocumentID" Type="Edm.String" MaxLength="10" sap:label="Document ID" sap:updatable="false"/>
                 <Property Name="Shortname" Type="Edm.String" MaxLength="60" sap:label="SHORT NAME" sap:quickinfo="Short Name"/>
                 <Property Name="Documentdescription" Type="Edm.String" MaxLength="100" sap:label="Document Description"/>
-                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:label="Document Category" sap:value-list="standard"/>
+                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:text="CategoryDes" sap:label="Document Category" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CategoryDes" Type="Edm.String" MaxLength="50" sap:label="Document Category De" sap:quickinfo="Document Category Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Default1" Type="Edm.String" MaxLength="1" sap:label="Default"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
             </EntityType>
             <EntityType Name="EquipmentMasterType" sap:label="Consumption View For Equipment Master" sap:content-version="1">
@@ -112,23 +117,24 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:value-list="standard"/>
-                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:value-list="standard"/>
-                <Property Name="EquipmentTypeReference" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="EquipmentMappingRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="SitemasterRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="EquipmentTypeReference" Type="Edm.Guid" sap:label="EquipmentTypeReference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="EquipmentMappingRef" Type="Edm.Guid" sap:label="EquipmentMappingRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="EquipmentTypeID" Type="Edm.String" MaxLength="1" sap:label="Equipment Type ID"/>
-                <Property Name="EquipmentType" Type="Edm.String" MaxLength="2" sap:label="Equipment Type" sap:quickinfo="data element for Equipment Type"/>
+                <Property Name="EquipmentTypeID" Type="Edm.String" MaxLength="1" sap:label="Equipment Type ID" sap:updatable="false"/>
+                <Property Name="EquipmentType" Type="Edm.String" MaxLength="2" sap:text="eqtypedes" sap:label="Equipment Type" sap:quickinfo="data element for Equipment Type" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="eqtypedes" Type="Edm.String" MaxLength="80" sap:label="Equipment Type Descr" sap:quickinfo="Equipment Type Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="EquipmentName" Type="Edm.String" MaxLength="60" sap:label="Equipment Name"/>
                 <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Status"/>
-                <Property Name="EquipmentSerialNumber" Type="Edm.String" MaxLength="30" sap:label="Equipment Serial Num" sap:quickinfo="Equipment Serial Number"/>
+                <Property Name="EquipmentSerialNumber" Type="Edm.String" MaxLength="30" sap:label="Equipment Serial Number"/>
                 <Property Name="EquipmentBrandName" Type="Edm.String" MaxLength="30" sap:label="Equipment Brand Name"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Objectid" Type="Edm.String" MaxLength="10" sap:label="Object ID"/>
             </EntityType>
             <EntityType Name="ICDMASTERType" sap:label="CONSUMPTION VIEW FOR ICDMASTER" sap:content-version="1">
@@ -138,11 +144,11 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:value-list="standard"/>
-                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:value-list="standard"/>
-                <Property Name="ChapterID" Type="Edm.String" MaxLength="4" sap:label="Chapter ID"/>
-                <Property Name="ChapterIDDescription" Type="Edm.String" MaxLength="60" sap:label="Chapter ID Descripti" sap:quickinfo="Chapter ID Description"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="SitemasterReference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
+                <Property Name="ChapterID" Type="Edm.String" MaxLength="4" sap:label="Level 1" sap:quickinfo="Chapter ID"/>
+                <Property Name="ChapterIDDescription" Type="Edm.String" MaxLength="60" sap:label="Level 1 Description" sap:quickinfo="Chapter ID Description"/>
                 <Property Name="Level2" Type="Edm.String" MaxLength="4" sap:label="Level 2"/>
                 <Property Name="Level2Description" Type="Edm.String" MaxLength="60" sap:label="Level 2 Description"/>
                 <Property Name="Level3" Type="Edm.String" MaxLength="4" sap:label="Level 3"/>
@@ -150,10 +156,10 @@
                 <Property Name="Level4" Type="Edm.String" MaxLength="4" sap:label="Level 4"/>
                 <Property Name="Level4Description" Type="Edm.String" MaxLength="60" sap:label="Level 4 Description"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="REMARKS" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
             </EntityType>
             <EntityType Name="INSTCDType" sap:label="Consumption view for INST Contact Details" sap:content-version="1">
@@ -170,13 +176,13 @@
                 <Property Name="Extension" Type="Edm.String" MaxLength="10" sap:label="Extension"/>
                 <Property Name="MobileNum" Type="Edm.String" MaxLength="20" sap:label="Mobile Number"/>
                 <Property Name="Email" Type="Edm.String" MaxLength="60" sap:label="Email"/>
-                <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="Deleteind" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Deleteind" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
-                <NavigationProperty Name="to_InstMaster" Relationship="cds_zsd_sdms_master.assoc_C7F8D17E80EBCFA5BBBCAED209125211" FromRole="ToRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211" ToRole="FromRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211"/>
+                <NavigationProperty Name="to_INSTMaster" Relationship="cds_zsd_sdms_master.assoc_C7F8D17E80EBCFA5BBBCAED209125211" FromRole="ToRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211" ToRole="FromRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211"/>
             </EntityType>
             <EntityType Name="INSTITUTIONMASTERType" sap:label="CONSUMPTION VIEW FOR INSTITUTIONMASTER" sap:content-version="1">
                 <Key>
@@ -188,7 +194,7 @@
                 <Property Name="to_SMOContact_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="InstitutionCode" Type="Edm.String" MaxLength="10" sap:label="Institution Code"/>
+                <Property Name="InstitutionCode" Type="Edm.String" MaxLength="10" sap:label="Institution Code" sap:updatable="false"/>
                 <Property Name="InstitutionName" Type="Edm.String" MaxLength="60" sap:label="Institution Name"/>
                 <Property Name="ContactPerson" Type="Edm.String" MaxLength="40" sap:label="Contact Person"/>
                 <Property Name="RefrencedBy" Type="Edm.String" MaxLength="60" sap:label="Refrenced By"/>
@@ -198,19 +204,21 @@
                 <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address4"/>
                 <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
-                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryName" sap:label="Country" sap:quickinfo="Country/Region Key" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CountryName" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="RegionText" sap:label="Region" sap:quickinfo="Region (State, Province, County)" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="RegionText" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Zipcode" Type="Edm.String" MaxLength="12" sap:label="Zip code"/>
-                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key" sap:value-list="standard"/>
                 <Property Name="OfficeTelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
                 <Property Name="Extension" Type="Edm.String" MaxLength="10" sap:label="Extension"/>
                 <Property Name="MobileNumber" Type="Edm.String" MaxLength="20" sap:label="Mobile Number"/>
                 <Property Name="Email" Type="Edm.String" MaxLength="60" sap:label="Email"/>
                 <Property Name="Website" Type="Edm.String" MaxLength="60" sap:label="Website"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="CreatedOn" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="ChangedOn" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
                 <NavigationProperty Name="to_INSTContactD" Relationship="cds_zsd_sdms_master.assoc_C7F8D17E80EBCFA5BBBCAED209125211" FromRole="FromRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211" ToRole="ToRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211"/>
                 <NavigationProperty Name="to_SMOContact" Relationship="cds_zsd_sdms_master.assoc_32A786A5444000C80EEAB12E9BC76EDD" FromRole="FromRole_assoc_32A786A5444000C80EEAB12E9BC76EDD" ToRole="ToRole_assoc_32A786A5444000C80EEAB12E9BC76EDD"/>
@@ -222,21 +230,22 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="ServicecatRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:value-list="standard"/>
-                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:value-list="standard"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="Site Master Reference Guid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="ServicecatRef" Type="Edm.Guid" sap:label="Service Category Reference Guid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Languagekey" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="ServiceCode" Type="Edm.String" MaxLength="10" sap:label="Service Code"/>
-                <Property Name="ShortName" Type="Edm.String" MaxLength="60" sap:label="SHORT NAME" sap:quickinfo="Short Name"/>
-                <Property Name="ServiceDescription" Type="Edm.String" MaxLength="100" sap:label="Service Description" sap:value-list="standard"/>
-                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:label="Service Category" sap:value-list="standard"/>
-                <Property Name="ServiceCategoryIndicator" Type="Edm.String" MaxLength="20" sap:label="Service Category Ind" sap:quickinfo="Service Category Indicator" sap:value-list="standard"/>
+                <Property Name="ServiceCode" Type="Edm.String" MaxLength="10" sap:label="Service Code" sap:updatable="false"/>
+                <Property Name="ShortName" Type="Edm.String" MaxLength="60" sap:label="Short Name"/>
+                <Property Name="ServiceDescription" Type="Edm.String" MaxLength="100" sap:label="Service Description"/>
+                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:text="Scatgd" sap:label="Service Category" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Des" sap:quickinfo="Service Category Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ServiceCategoryIndicator" Type="Edm.String" MaxLength="20" sap:label="Service Category Indicator"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="IsDeleted" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="IsDeleted" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
             </EntityType>
             <EntityType Name="SiteContactDType" sap:label="Consumption view for Site Contact details" sap:content-version="1">
@@ -254,10 +263,10 @@
                 <Property Name="MobileNum" Type="Edm.String" MaxLength="20" sap:label="Mobile Number"/>
                 <Property Name="Email" Type="Edm.String" MaxLength="60" sap:label="Email"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="Deleteind" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Deleteind" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
                 <NavigationProperty Name="to_Sitemaster" Relationship="cds_zsd_sdms_master.assoc_2A77F73589A455806ACAB570F4BEB417" FromRole="ToRole_assoc_2A77F73589A455806ACAB570F4BEB417" ToRole="FromRole_assoc_2A77F73589A455806ACAB570F4BEB417"/>
             </EntityType>
@@ -270,12 +279,13 @@
                 <Property Name="to_SITECONTD_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="to_SITESMOD_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="InstitutionMasterRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="InstitutionMasterRef" Type="Edm.Guid" sap:label="InstitutionMasterRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="SiteCode" Type="Edm.String" MaxLength="10" sap:label="Site Code"/>
+                <Property Name="SiteCode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false"/>
                 <Property Name="SiteName" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
                 <Property Name="LegalName" Type="Edm.String" MaxLength="100" sap:label="Legal Name"/>
-                <Property Name="InstitutionCode" Type="Edm.String" MaxLength="10" sap:label="Institution Code" sap:value-list="standard"/>
+                <Property Name="InstitutionCode" Type="Edm.String" MaxLength="10" sap:text="InsitutionName" sap:label="Institution Code" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="InsitutionName" Type="Edm.String" MaxLength="60" sap:label="Institution Name" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ContactPerson" Type="Edm.String" MaxLength="40" sap:label="Contact Person"/>
                 <Property Name="Address1" Type="Edm.String" MaxLength="80" sap:label="Address1"/>
                 <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address2"/>
@@ -283,19 +293,21 @@
                 <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address4"/>
                 <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
-                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)" sap:value-list="standard"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryName" sap:label="Country" sap:quickinfo="Country/Region Key" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CountryName" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="RegionText" sap:label="Region" sap:quickinfo="Region (State, Province, County)" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="RegionText" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Zipcode" Type="Edm.String" MaxLength="12" sap:label="Zip code"/>
-                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key" sap:value-list="standard"/>
                 <Property Name="OfficeTelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
                 <Property Name="Extension" Type="Edm.String" MaxLength="10" sap:label="Extension"/>
                 <Property Name="MobileTelephone" Type="Edm.String" MaxLength="20" sap:label="Mobile Number"/>
                 <Property Name="Email" Type="Edm.String" MaxLength="60" sap:label="Email"/>
                 <Property Name="Website" Type="Edm.String" MaxLength="60" sap:label="Website"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="CreatedOn" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="Changedon" Type="Edm.DateTimeOffset" Precision="0" sap:label="ChangedOn" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="isdeleted" Type="Edm.String" MaxLength="1" sap:label="Delete/Inactive Indicator&quot;" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
                 <NavigationProperty Name="to_SITECONTD" Relationship="cds_zsd_sdms_master.assoc_2A77F73589A455806ACAB570F4BEB417" FromRole="FromRole_assoc_2A77F73589A455806ACAB570F4BEB417" ToRole="ToRole_assoc_2A77F73589A455806ACAB570F4BEB417"/>
                 <NavigationProperty Name="to_SITESMOD" Relationship="cds_zsd_sdms_master.assoc_F16D01D52B321FC32837514E1AF34C98" FromRole="FromRole_assoc_F16D01D52B321FC32837514E1AF34C98" ToRole="ToRole_assoc_F16D01D52B321FC32837514E1AF34C98"/>
@@ -308,17 +320,17 @@
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="InstGuidref" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Employeename" Type="Edm.String" MaxLength="40" sap:label="Employee Code Name"/>
+                <Property Name="Employeename" Type="Edm.String" MaxLength="40" sap:label="Employee Code Name" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Role" Type="Edm.String" MaxLength="100" sap:label="Role"/>
                 <Property Name="Officetelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
                 <Property Name="Extension" Type="Edm.String" MaxLength="10" sap:label="Extension"/>
                 <Property Name="Mobilenum" Type="Edm.String" MaxLength="20" sap:label="Mobile Number"/>
                 <Property Name="EmailID" Type="Edm.String" MaxLength="60" sap:label="Email"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="DeleteIndicator" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="DeleteIndicator" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
                 <NavigationProperty Name="to_INSTMaster" Relationship="cds_zsd_sdms_master.assoc_32A786A5444000C80EEAB12E9BC76EDD" FromRole="ToRole_assoc_32A786A5444000C80EEAB12E9BC76EDD" ToRole="FromRole_assoc_32A786A5444000C80EEAB12E9BC76EDD"/>
             </EntityType>
@@ -337,43 +349,55 @@
                 <Property Name="Mobilenum" Type="Edm.String" MaxLength="20" sap:label="Mobile Number"/>
                 <Property Name="EmailID" Type="Edm.String" MaxLength="60" sap:label="Email"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
-                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
-                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
-                <Property Name="DeleteIndicator" Type="Edm.String" MaxLength="1" sap:label="Dele/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Changed On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="DeleteIndicator" Type="Edm.String" MaxLength="1" sap:label="Del/Inac Indicator" sap:quickinfo="Deletion/Inactive Indicator"/>
                 <Property Name="Remarks" Type="Edm.String" MaxLength="255" sap:label="Remarks"/>
                 <NavigationProperty Name="to_SiteMaster" Relationship="cds_zsd_sdms_master.assoc_F16D01D52B321FC32837514E1AF34C98" FromRole="ToRole_assoc_F16D01D52B321FC32837514E1AF34C98" ToRole="FromRole_assoc_F16D01D52B321FC32837514E1AF34C98"/>
             </EntityType>
+            <EntityType Name="ZSDMS_EQTYPE_F4Type" sap:label="equipment type VH" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="eqtyp"/>
+                </Key>
+                <Property Name="eqtyp" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Eqtypdesp" sap:label="Equipment Type" sap:quickinfo="data element for Equipment Type"/>
+                <Property Name="Eqtypdesp" Type="Edm.String" MaxLength="80" sap:label="Equipment Type Descr" sap:quickinfo="Equipment Type Description"/>
+            </EntityType>
             <EntityType Name="ZSDMS_F4_DCDBType" sap:label="Value help for category (dcdb)" sap:value-list="true" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Guid"/>
+                    <PropertyRef Name="guid"/>
                 </Key>
-                <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:label="Document Category"/>
+                <Property Name="guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:text="CategoryDes" sap:label="Document Category"/>
                 <Property Name="CategoryDes" Type="Edm.String" MaxLength="50" sap:label="Document Category De" sap:quickinfo="Document Category Description"/>
             </EntityType>
             <EntityType Name="ZSDMS_F4_INSTType" sap:label="Value Help for Institution Master" sap:value-list="true" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Guid"/>
+                    <PropertyRef Name="Incod"/>
                 </Key>
-                <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Incod" Type="Edm.String" MaxLength="10" sap:label="Institution Code"/>
+                <Property Name="Incod" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="Innam" sap:label="Institution Code"/>
                 <Property Name="Innam" Type="Edm.String" MaxLength="60" sap:label="Institution Name"/>
             </EntityType>
             <EntityType Name="ZSDMS_F4_SCDBType" sap:label="Value help for Service Category" sap:value-list="true" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Guid"/>
+                    <PropertyRef Name="Scatg"/>
                 </Key>
-                <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Scatg" Type="Edm.String" MaxLength="3" sap:label="Service Category"/>
+                <Property Name="Scatg" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="Scatgd" sap:label="Service Category"/>
                 <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Des" sap:quickinfo="Service Category Description"/>
             </EntityType>
-            <EntityType Name="ZSDMS_F4_SITEType" sap:label="Search help for Site code and name" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="ZSDMS_F4_SEDBMType" sap:label="Value help for Salesemp name" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Guid"/>
                 </Key>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code"/>
+                <Property Name="Seecd" Type="Edm.String" MaxLength="12" sap:label="Employee Code"/>
+                <Property Name="Seenm" Type="Edm.String" MaxLength="40" sap:label="Employee Code Name"/>
+            </EntityType>
+            <EntityType Name="ZSDMS_F4_SITEType" sap:label="Search help for Site code and name" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sitecode"/>
+                </Key>
+                <Property Name="Sitecode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Site Code"/>
                 <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
@@ -678,10 +702,10 @@
                 <EntitySet Name="SAP__PDFHeaderSet" EntityType="cds_zsd_sdms_master.SAP__PDFHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_zsd_sdms_master.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zsd_sdms_master.SAP__ValueHelp" sap:content-version="1"/>
-                <EntitySet Name="I_CountryText" EntityType="cds_zsd_sdms_master.I_CountryTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Country" EntityType="cds_zsd_sdms_master.I_CountryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CountryVH" EntityType="cds_zsd_sdms_master.I_CountryVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_Language" EntityType="cds_zsd_sdms_master.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="I_Region" EntityType="cds_zsd_sdms_master.I_RegionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZDO_SCTIN_F4" EntityType="cds_zsd_sdms_master.ZDO_SCTIN_F4Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_RegionVH" EntityType="cds_zsd_sdms_master.I_RegionVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="DOCUMENTMASTER" EntityType="cds_zsd_sdms_master.DOCUMENTMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="EquipmentMaster" EntityType="cds_zsd_sdms_master.EquipmentMasterType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="ICDMASTER" EntityType="cds_zsd_sdms_master.ICDMASTERType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
@@ -689,12 +713,14 @@
                 <EntitySet Name="INSTITUTIONMASTER" EntityType="cds_zsd_sdms_master.INSTITUTIONMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SERVICEMASTER" EntityType="cds_zsd_sdms_master.SERVICEMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SiteContactD" EntityType="cds_zsd_sdms_master.SiteContactDType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
-                <EntitySet Name="SITEMASTER" EntityType="cds_zsd_sdms_master.SITEMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="SITEMASTER" EntityType="cds_zsd_sdms_master.SITEMASTERType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SMOContacts" EntityType="cds_zsd_sdms_master.SMOContactsType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SiteSMOContacts" EntityType="cds_zsd_sdms_master.SiteSMOContactsType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZSDMS_EQTYPE_F4" EntityType="cds_zsd_sdms_master.ZSDMS_EQTYPE_F4Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_DCDB" EntityType="cds_zsd_sdms_master.ZSDMS_F4_DCDBType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_INST" EntityType="cds_zsd_sdms_master.ZSDMS_F4_INSTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_SCDB" EntityType="cds_zsd_sdms_master.ZSDMS_F4_SCDBType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZSDMS_F4_SEDBM" EntityType="cds_zsd_sdms_master.ZSDMS_F4_SEDBMType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_SITE" EntityType="cds_zsd_sdms_master.ZSDMS_F4_SITEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <AssociationSet Name="to_FooterSet" Association="cds_zsd_sdms_master.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/>
@@ -771,7 +797,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.DOCUMENTMASTERType/sitecode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.DOCUMENTMASTERType/SiteCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -782,11 +808,8 @@
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="sitecode"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SiteCode"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
@@ -796,7 +819,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.DOCUMENTMASTERType/sitename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.DOCUMENTMASTERType/SiteName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -807,11 +830,8 @@
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="sitename"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SiteName"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
@@ -836,7 +856,7 @@
                                     <PropertyValue Property="ValueListProperty" String="Category"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
+                                    <PropertyValue Property="ValueListProperty" String="guid"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="CategoryDes"/>
@@ -845,6 +865,7 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/Sitecode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
@@ -861,22 +882,18 @@
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/Sitename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Site Name"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
@@ -885,16 +902,15 @@
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitecode"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
@@ -921,6 +937,29 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/EquipmentType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Equipment Type"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_EQTYPE_F4"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentType"/>
+                                    <PropertyValue Property="ValueListProperty" String="eqtyp"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Eqtypdesp"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.ICDMASTERType/Sitecode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
@@ -936,40 +975,13 @@
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
-            </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.ICDMASTERType/Sitename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Site Name"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
-                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Sitecode"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.INSTITUTIONMASTERType/language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
@@ -1000,9 +1012,9 @@
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Country/Region Key"/>
+                        <PropertyValue Property="Label" String="Country"/>
                         <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="I_CountryText"/>
+                        <PropertyValue Property="CollectionPath" String="I_CountryVH"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
@@ -1011,24 +1023,44 @@
                                     <PropertyValue Property="ValueListProperty" String="Country"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Country_Text"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CountryName"/>
+                                    <PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="NationalityName"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="NationalityLongName"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CountryShortName"/>
+                                    <PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.INSTITUTIONMASTERType/Region" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Region"/>
+                        <PropertyValue Property="CollectionPath" String="I_RegionVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Region"/>
+                                    <PropertyValue Property="ValueListProperty" String="Region"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Country"/>
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Region_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Sitecode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
@@ -1045,22 +1077,18 @@
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Sitename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Site Name"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
@@ -1069,16 +1097,15 @@
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitecode"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Languagekey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
@@ -1105,34 +1132,6 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/ServiceDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Service Description"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceDescription"/>
-                                    <PropertyValue Property="ValueListProperty" String="sitecode, sitename"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Sitecode"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Category" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
@@ -1145,12 +1144,6 @@
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
-                                    <PropertyValue Property="ValueListProperty" String="SCATG"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Scatg"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
@@ -1160,40 +1153,7 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-            </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/ServiceCategoryIndicator" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Service Category Ind"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="ZDO_SCTIN_F4"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCategoryIndicator"/>
-                                    <PropertyValue Property="ValueListProperty" String="SCTIN"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="domain_name"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="value_position"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="language"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="value_low"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="text"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
@@ -1221,6 +1181,7 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/InstitutionCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Institution Code"/>
@@ -1231,12 +1192,6 @@
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="InstitutionCode"/>
-                                    <PropertyValue Property="ValueListProperty" String="INCOD"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Incod"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
@@ -1246,12 +1201,72 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="I_Country"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Country"/>
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsEuropeanUnionMember"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankAndBankInternalIDCheckRule"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankInternalIDLength"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankInternalIDCheckRule"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankNumberLength"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankCheckRule"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankAccountLength"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankPostalCheckRule"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BankDataCheckIsCountrySpecific"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/Region" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Region"/>
-                        <PropertyValue Property="CollectionPath" String="I_Region"/>
+                        <PropertyValue Property="CollectionPath" String="I_RegionVH"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
@@ -1266,46 +1281,37 @@
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Region_Text"/>
                                 </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="ProvincialTaxCode"/>
-                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.SMOContactsType/Employeename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Country/Region Key"/>
+                        <PropertyValue Property="Label" String="Employee Code Name"/>
                         <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="I_CountryText"/>
-                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SEDBM"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Country"/>
-                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Employeename"/>
+                                    <PropertyValue Property="ValueListProperty" String="Seenm"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Guid"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CountryName"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="NationalityName"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="NationalityLongName"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CountryShortName"/>
+                                    <PropertyValue Property="ValueListProperty" String="Seecd"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
@@ -1499,7 +1505,7 @@
                         <PropertyValue Property="RestrictedProperties">
                             <Collection>
                                 <Record>
-                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_InstMaster"/>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_INSTMaster"/>
                                     <PropertyValue Property="InsertRestrictions">
                                         <Record>
                                             <PropertyValue Property="Insertable" Bool="false"/>
@@ -1527,7 +1533,7 @@
                     <Record>
                         <PropertyValue Property="NonUpdatableNavigationProperties">
                             <Collection>
-                                <PropertyPath>to_InstMaster</PropertyPath>
+                                <PropertyPath>to_INSTMaster</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="Updatable" Path="Update_mc"/>
@@ -1608,7 +1614,24 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/I_CountryText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/I_Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/I_CountryVH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
                         <PropertyValue Property="Deletable" Bool="false"/>
@@ -1642,7 +1665,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/I_Region" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/I_RegionVH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
                         <PropertyValue Property="Deletable" Bool="false"/>
@@ -1941,7 +1964,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/ZDO_SCTIN_F4" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/ZSDMS_EQTYPE_F4" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
                         <PropertyValue Property="Deletable" Bool="false"/>
@@ -2009,6 +2032,23 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/ZSDMS_F4_SEDBM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/ZSDMS_F4_SITE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
@@ -2026,10 +2066,25 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.I_RegionType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.DOCUMENTMASTERType/DocumentID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/EquipmentTypeID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.INSTITUTIONMASTERType/InstitutionCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/ServiceCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/SiteCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.I_CountryType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SAPObjectNodeType">
                     <Record>
-                        <PropertyValue Property="Name" String="Region"/>
+                        <PropertyValue Property="Name" String="Country"/>
                     </Record>
                 </Annotation>
             </Annotations>
