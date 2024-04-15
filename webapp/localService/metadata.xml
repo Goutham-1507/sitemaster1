@@ -934,9 +934,11 @@
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.DOCUMENTMASTERType/docname" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Document Name"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="zsdms_dcname_vh"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">

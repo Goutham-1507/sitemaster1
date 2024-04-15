@@ -32,7 +32,7 @@
                     <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeID}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
+                    <smartField:SmartField value="{EquipmentTypeID}" editable = "{uiModel>/formEdit}"  />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{EquipmentType}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }"  textInEditModeSource="ValueList"/>
