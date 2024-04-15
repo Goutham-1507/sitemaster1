@@ -20,9 +20,9 @@
                     <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
                 </smartForm:layout>
                 <smartForm:Group>
-                    <smartForm:GroupElement>
+                    <!-- <smartForm:GroupElement>
                         <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
-                    </smartForm:GroupElement>
+                    </smartForm:GroupElement> -->
                     <smartForm:GroupElement>
                         <smartField:SmartField value="{SiteCode}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
@@ -59,10 +59,10 @@
                         <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Country}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
+                        <smartField:SmartField value="{Country}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Region}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
+                        <smartField:SmartField value="{Region}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
                         <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>

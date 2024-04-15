@@ -50,6 +50,7 @@ sap.ui.define([
                 },
                 error: (oData) => {
                     debugger;
+                    sap.m.MessageBox.error(JSON.parse(oData.responseText).error.message.value)
                 }
             })}
             else{
@@ -174,7 +175,7 @@ sap.ui.define([
                     }
                 }.bind(this),
                 error: function (oError) {
-                    sap.m.MessageBox.error(JSON.parse(oRepsonse.body).error.message.value);
+                    sap.m.MessageBox.error(JSON.parse(oError.responseText).error.message.value);
                 }
             });
         },

@@ -45,8 +45,11 @@
             <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType">
-                <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/>
+            <Annotations Target="cds_zsd_sdms_master.ZSDMS_C_ICDMType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.ZSDMS_C_ICDMType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.ICDMASTERType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>

@@ -1,0 +1,132 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZSB_SDMS_MASTERS$metadata">
+        <edmx:Include Namespace="cds_zsd_sdms_master" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local1">
+            <Annotations Target="SAP.SERVICEMASTERType/Sitecode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Site Code"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitecode"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitecode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- <Annotations Target="SAP.SERVICEMASTERType/Category">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Service Category"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SCDB"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+                                    <PropertyValue Property="ValueListProperty" String="Scatg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Scatgd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations> -->
+
+
+            <!-- <Annotations Target="SAP.DOCUMENTMASTERType/docname">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Document Name"/>
+                        <PropertyValue Property="CollectionPath" String="zsdms_dcname_vh"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="docname"/>
+                                    <PropertyValue Property="ValueListProperty" String="Dcname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Shortname"/>
+                                    <PropertyValue Property="ValueListProperty" String="Shname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations> -->
+            <Annotations Target="SAP.EquipmentMasterType/Sitecode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Site Code"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitecode"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitecode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <!-- <Annotations Target="SAP.EquipmentMasterType/EquipmentTypeID">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Equipment Type"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_EQTYPE_F4"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentTypeID"/>
+                                    <PropertyValue Property="ValueListProperty" String="eqtyp"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentType"/>
+                                    <PropertyValue Property="ValueListProperty" String="Eqtypdesp"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations> -->
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

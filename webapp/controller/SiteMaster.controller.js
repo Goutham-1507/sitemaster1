@@ -17,6 +17,7 @@ sap.ui.define([
     function (Controller, BaseController, Core, History, MessagePopover, MessageItem, Message, Element, MessageToast, jszip, xlsx) {
         "use strict";
         var that;
+        var entityKeyFields = {};
         return BaseController.extend("sitemaster.controller.SiteMaster", {
             onInit: function () {
                 var oToolPage = this.byId("toolPage");

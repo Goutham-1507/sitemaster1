@@ -19,30 +19,30 @@
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
             <smartForm:Group>
-                <smartForm:GroupElement>
+                <!-- <smartForm:GroupElement>
                     <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
-                </smartForm:GroupElement>
+                </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{sitecode}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{SiteCode}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"  />
                 </smartForm:GroupElement>
-                <smartForm:GroupElement>
+                <!-- <smartForm:GroupElement>
                     <smartField:SmartField value="{sitename}" editable = "{uiModel>/formEdit}" />
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{DocumentID}" editable = "{uiModel>/formEdit}"/>
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Shortname}" editable = "{uiModel>/formEdit}"/>
-                </smartForm:GroupElement>
-                <smartForm:GroupElement>
-                    <smartField:SmartField value="{Documentdescription}" editable = "{uiModel>/formEdit}"/>
-                </smartForm:GroupElement>
+                </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Default1}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{docname}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
+                <!-- <smartForm:GroupElement>
+                    <smartField:SmartField value="{Documentdescription}" editable = "{uiModel>/formEdit}" mandatory="true" />
+                </smartForm:GroupElement> -->
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Shortname}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
+                </smartForm:GroupElement>
+                <!-- <smartForm:GroupElement>
+                    <smartField:SmartField value="{Default1}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement> -->
             </smartForm:Group>
         </smartForm:SmartForm>
         <footer>

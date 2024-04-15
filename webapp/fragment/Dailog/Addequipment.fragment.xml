@@ -23,22 +23,22 @@
                     <smartField:SmartField value="{SitemasterRef}" />
                 </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
+                    <smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
+                    <smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeID}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{EquipmentTypeID}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentType}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
+                    <smartField:SmartField value="{EquipmentType}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentName}" editable = "{uiModel>/formEdit}"/>
+                    <smartField:SmartField value="{EquipmentName}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Status}" editable = "{uiModel>/formEdit}"/>

@@ -28,10 +28,18 @@
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "ZSB_SDMS_MASTERS_Annotation"
+                        "ZSB_SDMS_MASTERS_Annotation",
+                        "annotation0"
                     ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
                 }
             }
         },
