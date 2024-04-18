@@ -129,8 +129,8 @@
                 <Property Name="EquipmentTypeReference" Type="Edm.Guid" sap:label="EquipmentTypeReference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="EquipmentMappingRef" Type="Edm.Guid" sap:label="EquipmentMappingRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="EquipmentTypeID" Type="Edm.String" MaxLength="2" sap:label="Equipment Type" sap:quickinfo="Equipment Type ID" sap:value-list="standard"/>
-                <Property Name="EquipmentType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Equipment Type Description" sap:quickinfo="Equipment Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="EquipmentTypeID" Type="Edm.String" MaxLength="2" sap:label="Equipment Type ID"/>
+                <Property Name="EquipmentType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Equipment Type" sap:value-list="standard"/>
                 <Property Name="EquipmentName" Type="Edm.String" MaxLength="60" sap:label="Equipment Name" sap:value-list="standard"/>
                 <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Status" sap:value-list="fixed-values"/>
                 <Property Name="EquipmentSerialNumber" Type="Edm.String" MaxLength="30" sap:label="Equipment Serial Number"/>
@@ -150,13 +150,13 @@
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Level1" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Level 1 ID" sap:updatable="false"/>
-                <Property Name="Level1Description" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="Level 1 Description" sap:quickinfo="Level 1 descirption" sap:updatable="false"/>
+                <Property Name="Level1Description" Type="Edm.String" Nullable="false" MaxLength="100" sap:display-format="UpperCase" sap:label="Level 1 Description" sap:quickinfo="Level 1 descirption" sap:updatable="false"/>
                 <Property Name="Level2" Type="Edm.String" MaxLength="10" sap:label="Level 2 ID" sap:updatable="false"/>
-                <Property Name="Level2Description" Type="Edm.String" MaxLength="200" sap:label="Level 2 Description" sap:updatable="false"/>
+                <Property Name="Level2Description" Type="Edm.String" Nullable="false" MaxLength="200" sap:label="Level 2 Description" sap:updatable="false"/>
                 <Property Name="Level3" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Level 3 ID" sap:heading="" sap:updatable="false"/>
-                <Property Name="Level3Description" Type="Edm.String" MaxLength="200" sap:label="Level 3 Description" sap:updatable="false"/>
-                <Property Name="Level4" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Level 4 ID" sap:quickinfo="Level 4 descirption" sap:updatable="false"/>
-                <Property Name="Level4Description" Type="Edm.String" MaxLength="200" sap:label="Level 4 Description" sap:updatable="false"/>
+                <Property Name="Level3Description" Type="Edm.String" Nullable="false" MaxLength="200" sap:label="Level 3 Description" sap:updatable="false"/>
+                <Property Name="Level4" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Level 4 ID" sap:updatable="false"/>
+                <Property Name="Level4Description" Type="Edm.String" Nullable="false" MaxLength="200" sap:label="Level 4 Description" sap:updatable="false"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
                 <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
@@ -180,7 +180,7 @@
                 <Property Name="Level2Description" Type="Edm.String" MaxLength="200" sap:label="Level 2 Description"/>
                 <Property Name="Level3" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Level 3 ID" sap:heading="" sap:value-list="standard"/>
                 <Property Name="Level3Description" Type="Edm.String" MaxLength="200" sap:label="Level 3 Description"/>
-                <Property Name="Level4" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Level 4 Description" sap:quickinfo="Level 4 descirption" sap:value-list="standard"/>
+                <Property Name="Level4" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Level 4 ID" sap:value-list="standard"/>
                 <Property Name="Level4Description" Type="Edm.String" MaxLength="200" sap:label="Level 4 Description"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
                 <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
@@ -231,9 +231,9 @@
                 <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address4"/>
                 <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
-                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryName" sap:label="Country" sap:quickinfo="Country/Region Key" sap:value-list="standard"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryName" sap:label="Country" sap:quickinfo="Country/Region Key" sap:value-list="standard"/>
                 <Property Name="CountryName" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="RegionText" sap:label="Region" sap:quickinfo="Region (State, Province, County)" sap:value-list="standard"/>
+                <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="RegionText" sap:label="Region" sap:quickinfo="Region (State, Province, County)" sap:value-list="standard"/>
                 <Property Name="RegionText" Type="Edm.String" MaxLength="20" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Zipcode" Type="Edm.String" MaxLength="12" sap:label="Zip code"/>
                 <Property Name="OfficeTelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
@@ -283,7 +283,7 @@
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SiteGuidRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="ContactName" Type="Edm.String" MaxLength="40" sap:label="Site Contact Name" sap:quickinfo="Employee Code Name"/>
+                <Property Name="ContactName" Type="Edm.String" MaxLength="40" sap:label="Contact Name" sap:quickinfo="Employee Code Name"/>
                 <Property Name="Role" Type="Edm.String" MaxLength="100" sap:label="Role"/>
                 <Property Name="Officetelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
                 <Property Name="Extension" Type="Edm.String" MaxLength="10" sap:label="Extension"/>
@@ -399,21 +399,19 @@
                 </Key>
                 <Property Name="Eqtyp" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Equipment Type"/>
                 <Property Name="Eqnam" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Equipment Name"/>
-                <Property Name="Eqtypd" Type="Edm.String" MaxLength="80" sap:label="Equipment Type Descr" sap:quickinfo="Equipment Type Description"/>
             </EntityType>
             <EntityType Name="ZSDMS_EQTYPE_F4Type" sap:label="equipment type VH" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="eqtyp"/>
                 </Key>
                 <Property Name="eqtyp" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="Eqtypdesp" sap:label="Equipment Type"/>
-                <Property Name="Eqtypdesp" Type="Edm.String" MaxLength="80" sap:label="Equipment Type Descr" sap:quickinfo="Equipment Type Description"/>
+                <Property Name="Eqtypdesp" Type="Edm.String" MaxLength="80" sap:label="Equipment Type Description"/>
             </EntityType>
             <EntityType Name="ZSDMS_F4_DCDBType" sap:label="Value help for category (dcdb)" sap:value-list="true" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="guid"/>
+                    <PropertyRef Name="Category"/>
                 </Key>
-                <Property Name="guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Category" Type="Edm.String" MaxLength="3" sap:text="CategoryDes" sap:label="Document Category"/>
+                <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="CategoryDes" sap:label="Document Category"/>
                 <Property Name="CategoryDes" Type="Edm.String" MaxLength="50" sap:label="Document Category Description"/>
             </EntityType>
             <EntityType Name="ZSDMS_F4_INSTType" sap:label="Value Help for Institution Master" sap:value-list="true" sap:content-version="1">
@@ -428,8 +426,8 @@
                     <PropertyRef Name="Scatg"/>
                 </Key>
                 <Property Name="Scatg" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="Scatgd" sap:label="Service Category"/>
+                <Property Name="Sctin" Type="Edm.String" MaxLength="20" sap:label="Service Category Indicator"/>
                 <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Description"/>
-                <Property Name="Sctin" Type="Edm.String" MaxLength="20" sap:label="Service Category Ind" sap:quickinfo="Service Category Indicator"/>
             </EntityType>
             <EntityType Name="ZSDMS_F4_SEDBMType" sap:label="Value help for Salesemp name" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -478,7 +476,7 @@
                 <Property Name="Level1" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Level 1 ID"/>
                 <Property Name="Level2" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Level 2 ID"/>
                 <Property Name="Level3" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Level 3 ID" sap:heading=""/>
-                <Property Name="Level4" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Level 4 Description" sap:quickinfo="Level 4 descirption"/>
+                <Property Name="Level4" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Level 4 ID"/>
                 <Property Name="Levelds4" Type="Edm.String" MaxLength="200" sap:label="Level 4 Description"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
@@ -922,9 +920,6 @@
                                     <PropertyValue Property="ValueListProperty" String="Category"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="guid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="CategoryDes"/>
                                 </Record>
                             </Collection>
@@ -1028,7 +1023,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/EquipmentTypeID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/EquipmentType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1039,7 +1034,7 @@
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentTypeID"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentType"/>
                                     <PropertyValue Property="ValueListProperty" String="eqtyp"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
@@ -1051,11 +1046,9 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.EquipmentMasterType/EquipmentName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Equipment Name"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="zsdms_eqnam_f4"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
@@ -1066,10 +1059,6 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterIn">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentType"/>
-                                    <PropertyValue Property="ValueListProperty" String="Eqtypd"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterIn">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentTypeID"/>
                                     <PropertyValue Property="ValueListProperty" String="Eqtyp"/>
                                 </Record>
                             </Collection>
@@ -1239,7 +1228,7 @@
             <Annotations Target="cds_zsd_sdms_master.ICDMASTERType/Level4" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Level 4 Description"/>
+                        <PropertyValue Property="Label" String="Level 4 ID"/>
                         <PropertyValue Property="CollectionPath" String="ZSDMS_ICD_VH2"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
@@ -1430,10 +1419,10 @@
                                     <PropertyValue Property="ValueListProperty" String="Scatg"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Scatgd"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
+                                    <PropertyValue Property="ValueListProperty" String="Scatgd"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -1912,6 +1901,8 @@
                         <PropertyValue Property="RequiredProperties">
                             <Collection>
                                 <PropertyPath>InstitutionCode</PropertyPath>
+                                <PropertyPath>Country</PropertyPath>
+                                <PropertyPath>Region</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="Insertable" Bool="true"/>
@@ -2359,6 +2350,14 @@
                 </Annotation>
                 <Annotation Term="Capabilities.InsertRestrictions">
                     <Record>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>Level1Description</PropertyPath>
+                                <PropertyPath>Level2Description</PropertyPath>
+                                <PropertyPath>Level3Description</PropertyPath>
+                                <PropertyPath>Level4Description</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
                         <PropertyValue Property="Insertable" Bool="true"/>
                     </Record>
                 </Annotation>

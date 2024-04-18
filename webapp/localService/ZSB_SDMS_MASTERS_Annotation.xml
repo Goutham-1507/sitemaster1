@@ -153,6 +153,15 @@
             <Annotations Target="cds_zsd_sdms_master.SMOContactsType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SMOContactsType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Employeename"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SiteSMOContactsType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>

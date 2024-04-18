@@ -23,7 +23,7 @@
 					<smartField:SmartField value="{SitemasterRef}" />
 				</smartForm:GroupElement> -->
 				<smartForm:GroupElement>
-					<smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
+					<smartField:SmartField value="{Sitecode}" editable = "{uiModel>/formEdit}" />
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
 					<smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} ? false : false }" />
@@ -35,19 +35,19 @@
 					<smartField:SmartField value="{ChapterIDDescription}" editable = "{= ${uiModel>/nonEditable} ? false : false }" />
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
-					<smartField:SmartField value="{Level2}" editable = "{uiModel>/formEdit}" />
+					<smartField:SmartField value="{Level2}" editable = "{= ${uiModel>/nonEditable} ? false : false }"/>
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
 					<smartField:SmartField value="{Level2Description}" editable = "{= ${uiModel>/nonEditable} ? false : false }" />
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
-					<smartField:SmartField value="{Level3}" editable = "{uiModel>/formEdit}"/>
+					<smartField:SmartField value="{Level3}" editable = "{= ${uiModel>/nonEditable} ? false : false }"/>
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
 					<smartField:SmartField value="{Level3Description}"  editable = "{= ${uiModel>/nonEditable} ? false : false }"/>
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
-					<smartField:SmartField value="{Level4}" editable = "{uiModel>/formEdit}"/>
+					<smartField:SmartField value="{Level4}" editable = "{= ${uiModel>/nonEditable} ? false : false }"/>
 				</smartForm:GroupElement>
 				<smartForm:GroupElement>
 					<smartField:SmartField value="{Level4Description}"  editable = "{= ${uiModel>/nonEditable} ? false : false }"/>

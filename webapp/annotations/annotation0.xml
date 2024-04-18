@@ -13,7 +13,166 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local1">
-            <Annotations Target="SAP.SERVICEMASTERType/Sitecode">
+            <Annotations Target="SAP.DOCUMENTMASTERType/docname">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Document Name"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="zsdms_dcname_vh"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="docname"/>
+                                    <PropertyValue Property="ValueListProperty" String="Dcname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+                                    <PropertyValue Property="ValueListProperty" String="Doccat"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Shortname"/>
+                                    <PropertyValue Property="ValueListProperty" String="Shname"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ICDMASTERType/ChapterID">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Level 1"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_C_ICDM"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ChapterID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ChapterIDDescription"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level1Description"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level2"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level2Description"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level2Description"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level3"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level3Description"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level3Description"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level4"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level4"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level4Description"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level4Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <!-- <Annotations Target="SAP.ICDMASTERType/Level2">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Level 2 ID"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_ICD_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level2"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ChapterID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level2Description"/>
+                                    <PropertyValue Property="ValueListProperty" String="Levelds2"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ICDMASTERType/Level3">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_ICD_VH1"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level3"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level2"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ChapterID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level3Description"/>
+                                    <PropertyValue Property="ValueListProperty" String="Levelds3"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ICDMASTERType/Level4">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Level 4 ID"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_ICD_VH2"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level4"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level4"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level3"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level3"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level2"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ChapterID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Level1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Level4Description"/>
+                                    <PropertyValue Property="ValueListProperty" String="Levelds4"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations> -->
+            <Annotations Target="SAP.ICDMASTERType/Sitecode">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Site Code"/>
@@ -35,34 +194,6 @@
                     </Record>
                 </Annotation>
             </Annotations>
-
-            <!-- <Annotations Target="SAP.SERVICEMASTERType/Category">
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Service Category"/>
-                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SCDB"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
-                                    <PropertyValue Property="ValueListProperty" String="Scatg"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Scatgd"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations> -->
-
-
-        
             <Annotations Target="SAP.EquipmentMasterType/Sitecode">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -85,53 +216,80 @@
                     </Record>
                 </Annotation>
             </Annotations>
-
-
-            <Annotations Target="SAP.DOCUMENTMASTERType/docname">
+            <Annotations Target="SAP.SERVICEMASTERType/Sitecode">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Document Name"/>
+                        <PropertyValue Property="Label" String="Site Code"/>
                         <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="zsdms_dcname_vh"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="docname"/>
-                                    <PropertyValue Property="ValueListProperty" String="Dcname"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitecode"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitecode"/>
                                 </Record>
-                                <Record Type="Common.ValueListParameterOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Shortname"/>
-                                    <PropertyValue Property="ValueListProperty" String="Shname"/>
+                               <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
             </Annotations>
-           
-            <!-- <Annotations Target="SAP.EquipmentMasterType/EquipmentTypeID">
+            <Annotations Target="SAP.SERVICEMASTERType/Category">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Equipment Type"/>
+                        <PropertyValue Property="Label" String="Service Category"/>
                         <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="ZSDMS_EQTYPE_F4"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SCDB"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentTypeID"/>
-                                    <PropertyValue Property="ValueListProperty" String="eqtyp"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+                                    <PropertyValue Property="ValueListProperty" String="Scatg"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EquipmentType"/>
-                                    <PropertyValue Property="ValueListProperty" String="Eqtypdesp"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCategoryIndicator"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
-            </Annotations> -->
+            </Annotations>
+            <Annotations Target="SAP.SMOContactsType/Employeename">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Employee Name"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SEDBM"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Employeename"/>
+                                    <PropertyValue Property="ValueListProperty" String="Seenm"/>
+                                </Record>
+                               <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Role"/>
+                                    <PropertyValue Property="ValueListProperty" String="Role"/>
+                                </Record>
+                              <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Mobilenum"/>
+                                    <PropertyValue Property="ValueListProperty" String="Monum"/>
+                                </Record>
+                               <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="EmailID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Email"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

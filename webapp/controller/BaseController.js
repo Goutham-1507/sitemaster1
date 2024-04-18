@@ -23,7 +23,7 @@ sap.ui.define([
             this.getView().getModel(model).refresh();
         },
         defineEntityKeyFields: function () {
-            entityKeyFields[`${this.getView().byId('idDocument').getEntitySet()}`] = 'DocumentID';
+            entityKeyFields[`${this.getView().byId('idDocument').getEntitySet()}`] = 'docname';
             entityKeyFields[`${this.getView().byId('idEquipment').getEntitySet()}`] = "EquipmentTypeID";
             entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = "ChapterID";
             entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = "InstitutionCode";
@@ -156,7 +156,7 @@ sap.ui.define([
             debugger;
             oDataModel.submitChanges({
                 success: function (oData) {
-                    var oRepsonse = (oData.__batchResponses.length >= 1) && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
+                    var oRepsonse = Object.entries(oData).length && oData.__batchResponses[0].response ? oData.__batchResponses[0].response : oData.__batchResponses[0].__changeResponses[0];
                     if (oRepsonse.statusCode < "300") {
                         if (oRepsonse.statusText === "Created") {
                             MessageToast.show("Created successfully");
