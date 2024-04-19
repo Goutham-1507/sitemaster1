@@ -113,13 +113,13 @@
                 </Annotation>
                 <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Delete_mc">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Update_mc">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType">
                 <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SiteContactDType/Delete_mc">

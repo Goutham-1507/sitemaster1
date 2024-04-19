@@ -216,7 +216,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="SAP.SERVICEMASTERType/Sitecode">
+            <Annotations Target="SAP.SiteServiceMasterType/Sitecode">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Site Code"/>
@@ -238,7 +238,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="SAP.SERVICEMASTERType/Category">
+            <Annotations Target="SAP.SiteServiceMasterType/Category">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Service Category"/>
@@ -342,7 +342,7 @@
                     </Record>
                 </Annotation>
             </Annotations> -->
-            <Annotations Target="SAP.SERVICEMASTERType/ServiceCode">
+            <Annotations Target="SAP.SiteServiceMasterType/ServiceCode">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Site Service ID"/>

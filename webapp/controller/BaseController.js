@@ -25,7 +25,7 @@ sap.ui.define([
         defineEntityKeyFields: function () {
             entityKeyFields[`${this.getView().byId('idDocument').getEntitySet()}`] = 'docname';
             entityKeyFields[`${this.getView().byId('idEquipment').getEntitySet()}`] = "EquipmentTypeID";
-            entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = "ChapterID";
+            // entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = "ChapterID";
             entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = "InstitutionCode";
             entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = "ServiceCode";
             entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = "SiteCode";

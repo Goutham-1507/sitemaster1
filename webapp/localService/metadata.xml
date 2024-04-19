@@ -225,10 +225,10 @@
                 <Property Name="InstitutionName" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Institution Name"/>
                 <Property Name="ContactPerson" Type="Edm.String" MaxLength="40" sap:label="Contact Person"/>
                 <Property Name="RefrencedBy" Type="Edm.String" MaxLength="60" sap:label="Refrenced By"/>
-                <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address1"/>
-                <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address2"/>
-                <Property Name="Address3" Type="Edm.String" MaxLength="80" sap:label="Address3"/>
-                <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address4"/>
+                <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address 1" sap:quickinfo="Address1"/>
+                <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address 2" sap:quickinfo="Address2"/>
+                <Property Name="Address3" Type="Edm.String" MaxLength="80" sap:label="Address 3" sap:quickinfo="Address3"/>
+                <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address 4" sap:quickinfo="Address4"/>
                 <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
                 <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryName" sap:label="Country" sap:quickinfo="Country/Region Key" sap:value-list="standard"/>
@@ -250,7 +250,7 @@
                 <NavigationProperty Name="to_INSTContactD" Relationship="cds_zsd_sdms_master.assoc_C7F8D17E80EBCFA5BBBCAED209125211" FromRole="FromRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211" ToRole="ToRole_assoc_C7F8D17E80EBCFA5BBBCAED209125211"/>
                 <NavigationProperty Name="to_SMOContact" Relationship="cds_zsd_sdms_master.assoc_32A786A5444000C80EEAB12E9BC76EDD" FromRole="FromRole_assoc_32A786A5444000C80EEAB12E9BC76EDD" ToRole="ToRole_assoc_32A786A5444000C80EEAB12E9BC76EDD"/>
             </EntityType>
-            <EntityType Name="SERVICEMASTERType" sap:label="Consumption view for service master" sap:content-version="1">
+            <EntityType Name="SiteServiceMasterType" sap:label="Consumption view for service master" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Guid"/>
                 </Key>
@@ -259,15 +259,15 @@
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="Site Master Reference Guid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="ServicecatRef" Type="Edm.Guid" sap:label="Service Category Reference Guid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false"/>
-                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:updatable="false"/>
                 <Property Name="Languagekey" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
-                <Property Name="ServiceCode" Type="Edm.String" MaxLength="10" sap:label="Site Service ID" sap:quickinfo="Service Code" sap:updatable="false" sap:value-list="standard"/>
-                <Property Name="ShortName" Type="Edm.String" MaxLength="60" sap:label="Short Name"/>
-                <Property Name="ServiceDescription" Type="Edm.String" MaxLength="100" sap:label="Site Service Description" sap:quickinfo="Service Description"/>
                 <Property Name="Category" Type="Edm.String" MaxLength="3" sap:text="Scatgd" sap:label="Service Category" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ServiceCategoryIndicator" Type="Edm.String" MaxLength="20" sap:label="Service Category Indicator"/>
+                <Property Name="ServiceCode" Type="Edm.String" MaxLength="10" sap:label="Site Service ID" sap:quickinfo="Service Code" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="ShortName" Type="Edm.String" MaxLength="60" sap:label="Short Name"/>
+                <Property Name="ServiceDescription" Type="Edm.String" MaxLength="100" sap:label="Site Service Description" sap:quickinfo="Service Description"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
                 <Property Name="CreatedOn" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
@@ -314,10 +314,10 @@
                 <Property Name="InstitutionCode" Type="Edm.String" MaxLength="10" sap:text="InsitutionName" sap:label="Institution Code" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="InsitutionName" Type="Edm.String" MaxLength="60" sap:label="Institution Name" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ContactPerson" Type="Edm.String" MaxLength="40" sap:label="Contact Person"/>
-                <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address1"/>
-                <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address2"/>
-                <Property Name="Address3" Type="Edm.String" MaxLength="80" sap:label="Address3"/>
-                <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address4"/>
+                <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address 1" sap:quickinfo="Address1"/>
+                <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address 2" sap:quickinfo="Address2"/>
+                <Property Name="Address3" Type="Edm.String" MaxLength="80" sap:label="Address 3" sap:quickinfo="Address3"/>
+                <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address 4" sap:quickinfo="Address4"/>
                 <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
                 <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryName" sap:label="Country" sap:quickinfo="Country/Region Key" sap:value-list="standard"/>
@@ -429,6 +429,13 @@
                 <Property Name="Sctin" Type="Edm.String" MaxLength="20" sap:label="Service Category Indicator"/>
                 <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Description"/>
             </EntityType>
+            <EntityType Name="zsdms_f4_ScodesType" sap:label="id description for site code and site name" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sitecode"/>
+                </Key>
+                <Property Name="Sitecode" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="Sitename" sap:label="Site Code"/>
+                <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
+            </EntityType>
             <EntityType Name="ZSDMS_F4_SEDBMType" sap:label="Value help for Salesemp name" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Seecd"/>
@@ -443,7 +450,7 @@
                 <Key>
                     <PropertyRef Name="Sitecode"/>
                 </Key>
-                <Property Name="Sitecode" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="Sitename" sap:label="Site Code"/>
+                <Property Name="Sitecode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Site Code"/>
                 <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
             </EntityType>
             <EntityType Name="ZSDMS_ICD_VHType" sap:label="Value help for ICD levels" sap:value-list="true" sap:content-version="1">
@@ -481,12 +488,13 @@
             </EntityType>
             <EntityType Name="zsdms_siteservice_vhType" sap:label="Value help for Site Service ID" sap:value-list="true" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Scatg"/>
+                    <PropertyRef Name="scatg"/>
                     <PropertyRef Name="Ssid"/>
                 </Key>
-                <Property Name="Scatg" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Service Category"/>
+                <Property Name="scatg" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Service Category"/>
                 <Property Name="Ssid" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Site Service ID"/>
                 <Property Name="Ssidd" Type="Edm.String" MaxLength="40" sap:label="Site Service ID Desc" sap:quickinfo="Site Service ID Description"/>
+                <Property Name="Sctin" Type="Edm.String" MaxLength="20" sap:label="Service Category Ind" sap:quickinfo="Service Category Indicator"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -801,7 +809,7 @@
                 <EntitySet Name="ICDMASTER" EntityType="cds_zsd_sdms_master.ICDMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="INSTCD" EntityType="cds_zsd_sdms_master.INSTCDType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="INSTITUTIONMASTER" EntityType="cds_zsd_sdms_master.INSTITUTIONMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
-                <EntitySet Name="SERVICEMASTER" EntityType="cds_zsd_sdms_master.SERVICEMASTERType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="SiteServiceMaster" EntityType="cds_zsd_sdms_master.SiteServiceMasterType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SiteContactD" EntityType="cds_zsd_sdms_master.SiteContactDType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SITEMASTER" EntityType="cds_zsd_sdms_master.SITEMASTERType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SMOContacts" EntityType="cds_zsd_sdms_master.SMOContactsType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
@@ -812,6 +820,7 @@
                 <EntitySet Name="ZSDMS_F4_DCDB" EntityType="cds_zsd_sdms_master.ZSDMS_F4_DCDBType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_INST" EntityType="cds_zsd_sdms_master.ZSDMS_F4_INSTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_SCDB" EntityType="cds_zsd_sdms_master.ZSDMS_F4_SCDBType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zsdms_f4_Scodes" EntityType="cds_zsd_sdms_master.zsdms_f4_ScodesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_SEDBM" EntityType="cds_zsd_sdms_master.ZSDMS_F4_SEDBMType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_F4_SITE" EntityType="cds_zsd_sdms_master.ZSDMS_F4_SITEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZSDMS_ICD_VH" EntityType="cds_zsd_sdms_master.ZSDMS_ICD_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
@@ -899,7 +908,7 @@
                     <Record>
                         <PropertyValue Property="Label" String="Site Code/Name"/>
                         <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
-                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
+                        <PropertyValue Property="CollectionPath" String="zsdms_f4_Scodes"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
@@ -1345,21 +1354,22 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Sitename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/Sitecode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Site Name"/>
+                        <PropertyValue Property="Label" String="Site Code"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
                         <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
                                 <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Sitename"/>
-                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterIn">
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="Sitecode"/>
                                     <PropertyValue Property="ValueListProperty" String="Sitecode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -1367,7 +1377,7 @@
                 </Annotation>
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Languagekey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/Languagekey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1392,32 +1402,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/ServiceCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String="Site Service ID"/>
-                        <PropertyValue Property="CollectionPath" String="zsdms_siteservice_vh"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCode"/>
-                                    <PropertyValue Property="ValueListProperty" String="Ssid"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterIn">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
-                                    <PropertyValue Property="ValueListProperty" String="Scatg"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="Ssidd"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__core.Immutable"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Category" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/Category" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueListForValidation" String=""/>
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1436,6 +1421,34 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Scatgd"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/ServiceCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Site Service ID"/>
+                        <PropertyValue Property="CollectionPath" String="zsdms_siteservice_vh"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="Ssid"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+                                    <PropertyValue Property="ValueListProperty" String="scatg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Ssidd"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -1662,17 +1675,17 @@
                 <Annotation Term="Common.CreatedAt" Path="Createdon"/>
                 <Annotation Term="Common.CreatedBy" Path="Createdby"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ChangedAt" Path="ChangedOn"/>
-                <Annotation Term="Common.ChangedBy" Path="ChangedBy"/>
-                <Annotation Term="Common.CreatedAt" Path="CreatedOn"/>
-                <Annotation Term="Common.CreatedBy" Path="CreatedBy"/>
-            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.SITEMASTERType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ChangedAt" Path="Changedon"/>
                 <Annotation Term="Common.ChangedBy" Path="Changedby"/>
                 <Annotation Term="Common.CreatedAt" Path="Createdon"/>
                 <Annotation Term="Common.CreatedBy" Path="Createdby"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ChangedAt" Path="ChangedOn"/>
+                <Annotation Term="Common.ChangedBy" Path="ChangedBy"/>
+                <Annotation Term="Common.CreatedAt" Path="CreatedOn"/>
+                <Annotation Term="Common.CreatedBy" Path="CreatedBy"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.ZSDMS_C_ICDMType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ChangedAt" Path="Changedon"/>
@@ -2026,46 +2039,6 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/SERVICEMASTER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Path="Delete_mc"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.FilterRestrictions">
-                    <Record>
-                        <PropertyValue Property="NonFilterableProperties">
-                            <Collection>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="true"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__core.OptimisticConcurrency">
-                    <Collection/>
-                </Annotation>
-                <Annotation Term="Capabilities.SortRestrictions">
-                    <Record>
-                        <PropertyValue Property="NonSortableProperties">
-                            <Collection>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Path="Update_mc"/>
-                    </Record>
-                </Annotation>
-            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/SITEMASTER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
@@ -2312,6 +2285,46 @@
                                 <PropertyPath>to_SiteMaster</PropertyPath>
                             </Collection>
                         </PropertyValue>
+                        <PropertyValue Property="Updatable" Path="Update_mc"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/SiteServiceMaster" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="Delete_mc"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
                         <PropertyValue Property="Updatable" Path="Update_mc"/>
                     </Record>
                 </Annotation>
@@ -2568,6 +2581,23 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/zsdms_f4_Scodes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zsd_sdms_master.cds_zsd_sdms_master_Entities/zsdms_siteservice_vh" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
@@ -2588,10 +2618,10 @@
             <Annotations Target="cds_zsd_sdms_master.INSTITUTIONMASTERType/InstitutionCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SERVICEMASTERType/Sitecode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/SiteCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
-            <Annotations Target="cds_zsd_sdms_master.SITEMASTERType/SiteCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_sdms_master.SiteServiceMasterType/Sitename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Immutable"/>
             </Annotations>
             <Annotations Target="cds_zsd_sdms_master.ZSDMS_C_ICDMType/Level1" xmlns="http://docs.oasis-open.org/odata/ns/edm">

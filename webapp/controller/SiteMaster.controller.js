@@ -306,7 +306,7 @@ sap.ui.define([
                 var dservices = this.mDialogs['Services'];
                 dservices.then(function (pDialog) {
                     debugger;
-                    var oContext = that._oDataModel.createEntry("/SERVICEMASTER");
+                    var oContext = that._oDataModel.createEntry("/SiteServiceMaster");
                     pDialog.unbindObject()
                     pDialog.setBindingContext(oContext)
 
@@ -410,7 +410,7 @@ sap.ui.define([
                 this.saveEntity(`/INSTITUTIONMASTER`, this._oDataModel, oEvent);
             },
             saveservices: function (oEvent) {
-                this.saveEntity(`/SERVICEMASTER`, this._oDataModel, oEvent);
+                this.saveEntity(`/SiteServiceMaster`, this._oDataModel, oEvent);
             },
             savesites: function (oEvent) {
                 this.saveEntity(`/SITEMASTER`, this._oDataModel, oEvent);
