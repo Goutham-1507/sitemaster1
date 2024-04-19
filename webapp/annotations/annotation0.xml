@@ -320,6 +320,49 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <!-- <Annotations Target="SAP.SITEMASTERType/SiteCode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Site Code"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SITE"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SiteCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitecode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SiteName"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sitename"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations> -->
+            <Annotations Target="SAP.SERVICEMASTERType/ServiceCode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Site Service ID"/>
+                        <PropertyValue Property="CollectionPath" String="zsdms_siteservice_vh"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="Ssid"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceDescription"/>
+                                    <PropertyValue Property="ValueListProperty" String="Ssidd"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
