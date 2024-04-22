@@ -290,7 +290,8 @@ sap.ui.define([
                     },
                     groupItems: true
                 });
-                this.getView().byId("idMessagePopoverBtn").addDependent(this._oMP);
+                // this.getView().byId("idMessagePopoverBtn").addDependent(this._oMP);
+                oEvent.getSource().addDependent(this._oMP);
             }
             this._oMP.toggle(oEvent.getSource());
         },
