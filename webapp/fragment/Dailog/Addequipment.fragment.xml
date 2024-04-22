@@ -28,12 +28,6 @@
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }" />
                 </smartForm:GroupElement>
-                <!-- <smartForm:GroupElement>
-                    <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
-                </smartForm:GroupElement> -->
-                <!-- <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentTypeID}" editable = "{uiModel>/formEdit}"  />
-                </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{EquipmentType}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
@@ -49,6 +43,35 @@
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{EquipmentBrandName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{CapacityRange}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{LocationSite}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{InstrumentID}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Dischargedate}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Lastmaintenancedate}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Retrievingdata}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{CalibrationQualification}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Validity}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Remarks}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+
+                
  
             </smartForm:Group>
         </smartForm:SmartForm>
