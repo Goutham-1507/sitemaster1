@@ -4,8 +4,8 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-  <Dialog  title ="{i18n>Addequipment}"  >
-  <customHeader>
+    <Dialog  title ="{i18n>Addequipment}">
+        <customHeader>
             <Toolbar>
                 <content>
                     <Title text ="{= ${uiModel>/mode} === 'create' ? ${i18n>Addequipment} : ${uiModel>/mode} === 'edit' ? ${i18n>Editequipment} : ${i18n>Displayequipment} }"></Title>
@@ -29,7 +29,7 @@
                     <smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{EquipmentType}" editable = "{uiModel>/formEdit}"  textInEditModeSource="ValueList"/>
+                    <smartField:SmartField value="{EquipmentType}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{EquipmentName}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
@@ -43,41 +43,42 @@
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{EquipmentBrandName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{CapacityRange}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{LocationSite}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{InstrumentID}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{Dischargedate}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{Lastmaintenancedate}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{Retrievingdata}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{CalibrationQualification}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{Validity}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
-                                <smartForm:GroupElement>
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{Remarks}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
 
-                
- 
+
+
             </smartForm:Group>
         </smartForm:SmartForm>
         <footer>
             <Toolbar>
                 <content>
+                    <Button id="idMessagePopoverBtn" icon="{ path: 'message>/', formatter: '.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.buttonTypeFormatter' }" text="{path: 'message>/', formatter: '.highestSeverityMessages' }" press="handleMessagePopoverPress" ariaHasPopup="Dialog" />
                     <!-- <Button visible="{=${messageModel>/messages}.length > 0 ? true : false }" icon="sap-icon://alert" type="Critical" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" /> -->
                     <ToolbarSpacer />
                     <Button type="Emphasized" text="Save" press=".saveequipment" visible="{=${uiModel>/formEdit} ? true : false}"/>

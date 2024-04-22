@@ -23,7 +23,7 @@
                     <smartField:SmartField value="{Language}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{SiteCode}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"  />
+                    <smartField:SmartField value="{SiteCode}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <!-- <smartForm:GroupElement>
                     <smartField:SmartField value="{sitename}" editable = "{uiModel>/formEdit}" />
@@ -32,7 +32,7 @@
                     <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{docname}" editable = "{uiModel>/formEdit}"  />
+                    <smartField:SmartField value="{docname}" editable = "{uiModel>/formEdit}" />
                 </smartForm:GroupElement>
                 <!-- <smartForm:GroupElement>
                     <smartField:SmartField value="{Documentdescription}" editable = "{uiModel>/formEdit}" mandatory="true" />
@@ -48,6 +48,8 @@
         <footer>
             <Toolbar>
                 <content>
+                    <Button id="idMessagePopoverBtn" icon="{ path: 'message>/', formatter: '.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.buttonTypeFormatter' }" text="{path: 'message>/', formatter: '.highestSeverityMessages' }" press="handleMessagePopoverPress" ariaHasPopup="Dialog" />
+
                     <!-- <Button visible="{=${messageModel>/messages}.length > 0 ? true : false }" icon="sap-icon://alert" type="Critical" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" /> -->
                     <ToolbarSpacer />
                     <Button type="Emphasized" text="Save" press=".savedocumnets" visible="{=${uiModel>/formEdit} ? true : false}"/>

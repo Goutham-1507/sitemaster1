@@ -59,10 +59,10 @@
                         <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Country}"  textInEditModeSource="ValueList" />
+                        <smartField:SmartField value="{Country}" textInEditModeSource="ValueList" />
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Region}"  textInEditModeSource="ValueList" />
+                        <smartField:SmartField value="{Region}" textInEditModeSource="ValueList" />
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
                         <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>
@@ -111,6 +111,8 @@
         <footer>
             <Toolbar>
                 <content>
+                    <Button id="idMessagePopoverBtn" icon="{ path: 'message>/', formatter: '.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.buttonTypeFormatter' }" text="{path: 'message>/', formatter: '.highestSeverityMessages' }" press="handleMessagePopoverPress" ariaHasPopup="Dialog" />
+
                     <!-- <Button visible="{=${messageModel>/messages}.length > 0 ? true : false }" icon="sap-icon://alert" type="Critical" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" /> -->
                     <ToolbarSpacer />
                     <Button type="Emphasized" text="Save" press=".savesites" visible="{=${uiModel>/formEdit} ? true : false}" />

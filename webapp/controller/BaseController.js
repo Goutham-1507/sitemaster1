@@ -6,18 +6,19 @@ sap.ui.define([
     'sap/ui/core/message/Message',
     'sap/ui/core/library',
     "sap/m/MessageToast",
-    'sap/ui/model/Filter'
+    'sap/ui/model/Filter',
+    "sap/m/MessagePopover",
+    "sap/m/MessageItem",
 
-], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast, Filter) {
+], function (Controller, History, UIComponent, Core, Message, coreLibrary, MessageToast, Filter, MessagePopover, MessageItem) {
 
     "use strict";
     var MessageType = coreLibrary.MessageType;
     var that;
     var entityKeyFields = {};
     return Controller.extend("sitemaster.controller.BaseController", {
-        declareModel: function (modelName) {
+            declareModel: function (modelName) {
             this.getView().setModel(new sap.ui.model.json.JSONModel({}), modelName);
-
         },
         refreshModel: function (model) {
             this.getView().getModel(model).refresh();
@@ -45,22 +46,23 @@ sap.ui.define([
                     filters.push(filter)
 
                 })
-            await this.getOwnerComponent().getModel().read(`/${entity}`, {
-                filters: filters,
-                success: (oData) => {
-                    // debugger;
-                    if (oData.results.length !== 0) {
-                        MessageToast.show('An entry already exist with the same code');
-                    } else {
-                        this.oDataSubmitChanges(this._oDataModel, this.oEvent);
+
+                await this.getOwnerComponent().getModel().read(`/${entity}`, {
+                    filters: filters,
+                    success: (oData) => {
+                        // debugger;
+                        if (oData.results.length !== 0) {
+                            MessageToast.show('An entry already exist with the same code');
+                        } else {
+                            this.oDataSubmitChanges(this._oDataModel, this.oEvent);
+                        }
+                    },
+                    error: (oData) => {
+                        debugger;
+                        sap.m.MessageBox.error(JSON.parse(oData.responseText).error.message.value)
                     }
-                },
-                error: (oData) => {
-                    debugger;
-                    sap.m.MessageBox.error(JSON.parse(oData.responseText).error.message.value)
-                }
-            })}
-            else{
+                })
+            } else {
                 this.oDataSubmitChanges(this._oDataModel, this.oEvent);
             }
 
@@ -89,6 +91,7 @@ sap.ui.define([
             this.getView().setBusy(false)
             sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
         },
+       
 
         saveEntity: async function (Entity, oDataModel, oEvent) {
 
@@ -100,7 +103,6 @@ sap.ui.define([
 
             debugger;
 
-            // Object.assign(object, oPendingChanges[aKeys[0]])
             var InsSiteEntity = "";
             for (var i = 0; i < aKeys.length; i++) {
                 delete oPendingChanges[aKeys[i]].__metadata;
@@ -169,7 +171,6 @@ sap.ui.define([
                             MessageToast.show("Created successfully");
                         } else {
                             MessageToast.show("Updated successfully");
-
                         }
                         this.smartTable.rebindTable();
                         oEvent && oEvent.getSource().getParent().getParent().close();
@@ -187,11 +188,112 @@ sap.ui.define([
             });
         },
         toggleEdit: function (oEvent) {
-            var  mode = this.getView().getModel('uiModel').getProperty('/mode')
+            var mode = this.getView().getModel('uiModel').getProperty('/mode')
             this.getView().getModel('uiModel').setProperty('/formEdit', !this.getView().getModel('uiModel').getProperty('/formEdit'));
             this.getView().getModel('uiModel').setProperty('/mode', mode === 'display' ? "edit" : "display");
-        }
+        },
 
+        buttonIconFormatter: function () {
+            debugger;
+            var sIcon;
+            var aMessages = this._MessageManager.getMessageModel().oData;
+
+            aMessages.forEach(function (sMessage) {
+                switch (sMessage.type) {
+                    case "Error":
+                        sIcon = "sap-icon://error";
+                        break;
+                    case "Warning":
+                        sIcon = sIcon !== "sap-icon://error" ? "sap-icon://alert" : sIcon;
+                        break;
+                    case "Success":
+                        sIcon = sIcon !== "sap-icon://error" && sIcon !== "sap-icon://alert" ? "sap-icon://sys-enter-2" : sIcon;
+                        break;
+                    default:
+                        sIcon = !sIcon ? "sap-icon://information" : sIcon;
+                        break;
+                }
+            });
+
+            return sIcon;
+        },
+        buttonTypeFormatter: function () {
+            var sHighestSeverity;
+            var aMessages = this._MessageManager.getMessageModel().oData;
+            aMessages.forEach(function (sMessage) {
+                switch (sMessage.type) {
+                    case "Error":
+                        sHighestSeverity = "Negative";
+                        break;
+                    case "Warning":
+                        sHighestSeverity = sHighestSeverity !== "Negative" ? "Critical" : sHighestSeverity;
+                        break;
+                    case "Success":
+                        sHighestSeverity = sHighestSeverity !== "Negative" && sHighestSeverity !== "Critical" ? "Success" : sHighestSeverity;
+                        break;
+                    default:
+                        sHighestSeverity = !sHighestSeverity ? "Neutral" : sHighestSeverity;
+                        break;
+                }
+            });
+
+            return sHighestSeverity;
+        },
+        buttonIconFormatter: function () {
+            var sIcon;
+            var aMessages = this._MessageManager.getMessageModel().oData;
+
+            aMessages.forEach(function (sMessage) {
+                switch (sMessage.type) {
+                    case "Error":
+                        sIcon = "sap-icon://error";
+                        break;
+                    case "Warning":
+                        sIcon = sIcon !== "sap-icon://error" ? "sap-icon://alert" : sIcon;
+                        break;
+                    case "Success":
+                        sIcon = sIcon !== "sap-icon://error" && sIcon !== "sap-icon://alert" ? "sap-icon://sys-enter-2" : sIcon;
+                        break;
+                    default:
+                        sIcon = !sIcon ? "sap-icon://information" : sIcon;
+                        break;
+                }
+            });
+
+            return sIcon;
+        },
+
+        handleMessagePopoverPress: function (oEvent) {
+            if (!this._oMP) {
+                this._oMP = new MessagePopover({
+                    activeTitlePress: function (oEvent) {
+                        var oItem = oEvent.getParameter("item"),
+                            oMessage = oItem.getBindingContext("message").getObject(),
+                            oControl = Element.registry.get(oMessage.getControlId());
+
+                        if (oControl) {
+                            if (oControl.isFocusable()) {
+                                oControl.focus();
+                            }
+                        }
+                    },
+                    items: {
+                        path: "message>/",
+                        template: new MessageItem({
+                            title: "{message>message}",
+                            subtitle: "{message>additionalText}",
+                            // groupName: { parts: [{ path: 'message>controlIds' }], formatter: this.getGroupName },
+                            activeTitle: true,
+                            type: "{message>type}",
+                            description: "{message>message}"
+                        })
+                    },
+                    groupItems: true
+                });
+                this.getView().byId("idMessagePopoverBtn").addDependent(this._oMP);
+            }
+            this._oMP.toggle(oEvent.getSource());
+        },
 
     });
 });

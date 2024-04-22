@@ -4,8 +4,8 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Dialog  title ="{i18n>Addservices}"  >
-    <customHeader>
+    <Dialog  title ="{i18n>Addservices}">
+        <customHeader>
             <Toolbar>
                 <content>
                     <Title text ="{= ${uiModel>/mode} === 'create' ? ${i18n>Addservices} : ${uiModel>/mode} === 'edit' ? ${i18n>Editservices} : ${i18n>Displayservices} }"></Title>
@@ -14,7 +14,7 @@
                 </content>
             </Toolbar>
         </customHeader>
-    <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
+        <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
             <smartForm:layout>
                 <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
             </smartForm:layout>
@@ -25,8 +25,8 @@
                 <!-- <smartForm:GroupElement>
                     <smartField:SmartField value="{Languagekey}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement> -->
-                
-                 <smartForm:GroupElement>
+
+                <smartForm:GroupElement>
                     <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
@@ -36,7 +36,7 @@
                     <smartField:SmartField value="{ShortName}" editable = "{uiModel>/formEdit}"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }"  textInEditModeSource="ValueList"/>
+                    <smartField:SmartField value="{Sitename}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }" textInEditModeSource="ValueList"/>
                 </smartForm:GroupElement>
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{ServiceCategoryIndicator}" editable = "{= ${uiModel>/nonEditable} === undefined ? false : false }"/>
@@ -49,6 +49,8 @@
         <footer>
             <Toolbar>
                 <content>
+                    <Button id="idMessagePopoverBtn" icon="{ path: 'message>/', formatter: '.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.buttonTypeFormatter' }" text="{path: 'message>/', formatter: '.highestSeverityMessages' }" press="handleMessagePopoverPress" ariaHasPopup="Dialog" />
+
                     <!-- <Button visible="{=${messageModel>/messages}.length > 0 ? true : false }" icon="sap-icon://alert" type="Critical" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" /> -->
                     <ToolbarSpacer />
                     <Button type="Emphasized" text="Save" press=".saveservices" visible="{=${uiModel>/formEdit} ? true : false}"/>
