@@ -23,23 +23,30 @@ sap.ui.define([
             this.getView().getModel(model).refresh();
         },
         defineEntityKeyFields: function () {
-            entityKeyFields[`${this.getView().byId('idDocument').getEntitySet()}`] = 'docname';
-            entityKeyFields[`${this.getView().byId('idEquipment').getEntitySet()}`] = "EquipmentTypeID";
-            // entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = "ChapterID";
-            entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = "InstitutionCode";
-            entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = "ServiceCode";
-            entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = "SiteCode";
+            entityKeyFields[`${this.getView().byId('idDocument').getEntitySet()}`] = ["docname","Category","SiteCode"];
+            entityKeyFields[`${this.getView().byId('idEquipment').getEntitySet()}`] = ["EquipmentTypeID"];
+            entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = ["Sitecode","Level4"];
+            entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = ["InstitutionCode"];
+            entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = ["ServiceCode"];
+            entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = ["SiteCode"];
         },
-        ValidateEntityData: async function (field, entity, object) {
+        ValidateEntityData: async function (filtersFields, entity, object) {
             // `'${field}'`, 'EQ', '${object['${field}']}'
-            if(field){
-            var filter = new Filter({
-                path: `${field}`,
-                operator: 'EQ',
-                value1: object[field]
-            })
+            if (filtersFields && filtersFields.length) {
+                var filters = []
+                filtersFields.forEach(ele => {
+
+                    var filter = new Filter({
+                        path: `${ele}`,
+                        operator: 'EQ',
+                        value1: object[ele]
+                    })
+
+                    filters.push(filter)
+
+                })
             await this.getOwnerComponent().getModel().read(`/${entity}`, {
-                filters: [filter],
+                filters: filters,
                 success: (oData) => {
                     // debugger;
                     if (oData.results.length !== 0) {

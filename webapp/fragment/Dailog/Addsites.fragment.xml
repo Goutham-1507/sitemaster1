@@ -59,10 +59,10 @@
                         <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Country}" editable = "{= ${uiModel>/nonEditable} ? false : false }" textInEditModeSource="ValueList" />
+                        <smartField:SmartField value="{Country}"  textInEditModeSource="ValueList" />
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
-                        <smartField:SmartField value="{Region}" editable = "{= ${uiModel>/nonEditable} ? false : false }" textInEditModeSource="ValueList" />
+                        <smartField:SmartField value="{Region}"  textInEditModeSource="ValueList" />
                     </smartForm:GroupElement>
                     <smartForm:GroupElement>
                         <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>
