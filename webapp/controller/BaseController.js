@@ -91,6 +91,25 @@ sap.ui.define([
             this.getView().setBusy(false)
             sap.m.MessageBox.error(!odata.responseText.includes("<?xml") ? JSON.parse(odata.responseText).error.message.value : odata.responseText);
         },
+
+        
+        _validateStudyInfo: function () {
+            var aPromises = [];
+            // var oViewObject = this.getView().getBindingContext().getObject();
+            var formId = this.oEvent.getSource().getParent().getParent().getContent()[0].sId.replace(`${this.getView().sId}--`,"");
+            
+            
+            
+            this.byId(formId).getGroups().forEach(oGroup => {
+                oGroup.getGroupElements().forEach(oElement => {
+                    aPromises.push(oElement.getElements()[0].checkValuesValidity());
+                });
+            });
+            return Promise.all(aPromises).then(aResults => {
+                return aResults
+            });
+
+        },
        
 
         saveEntity: async function (Entity, oDataModel, oEvent) {
@@ -100,6 +119,7 @@ sap.ui.define([
             var aKeys = Object.keys(oPendingChanges);
             //  this.mEvent=oEvent;
             var object = {}
+            var validations = await this._validateStudyInfo();
 
             debugger;
 
@@ -261,6 +281,30 @@ sap.ui.define([
             });
 
             return sIcon;
+        },
+
+        highestSeverityMessages: function () {
+            var sHighestSeverityIconType = this.buttonTypeFormatter();
+            var sHighestSeverityMessageType;
+
+            switch (sHighestSeverityIconType) {
+                case "Negative":
+                    sHighestSeverityMessageType = "Error";
+                    break;
+                case "Critical":
+                    sHighestSeverityMessageType = "Warning";
+                    break;
+                case "Success":
+                    sHighestSeverityMessageType = "Success";
+                    break;
+                default:
+                    sHighestSeverityMessageType = !sHighestSeverityMessageType ? "Information" : sHighestSeverityMessageType;
+                    break;
+            }
+
+            return this._MessageManager.getMessageModel().oData.reduce(function (iNumberOfMessages, oMessageItem) {
+                return oMessageItem.type === sHighestSeverityMessageType ? ++iNumberOfMessages : iNumberOfMessages;
+            }, 0) || "";
         },
 
         handleMessagePopoverPress: function (oEvent) {

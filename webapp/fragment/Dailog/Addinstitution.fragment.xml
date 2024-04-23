@@ -14,8 +14,8 @@
                 </content>
             </Toolbar>
         </customHeader>
-        <VBox>
-            <smartForm:SmartForm validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
+        <!-- <VBox> -->
+            <smartForm:SmartForm id= "idInstSF" validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
                 <smartForm:layout>
                     <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
                 </smartForm:layout>
@@ -103,7 +103,7 @@
                     </smartForm:GroupElement>
                 </smartForm:Group>
             </smartForm:SmartForm>
-        </VBox>
+        <!-- </VBox> -->
         <footer>
             <Toolbar>
                 <content>
