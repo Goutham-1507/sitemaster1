@@ -28,7 +28,7 @@ sap.ui.define([
             entityKeyFields[`${this.getView().byId('idEquipment').getEntitySet()}`] = ["EquipmentTypeID"];
             entityKeyFields[`${this.getView().byId('idICD').getEntitySet()}`] = ["Sitecode","Level4"];
             entityKeyFields[`${this.getView().byId('idInstitution').getEntitySet()}`] = ["InstitutionCode"];
-            entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = ["ServiceCode"];
+            entityKeyFields[`${this.getView().byId('idServices').getEntitySet()}`] = ["ServiceCode","Sitecode"];
             entityKeyFields[`${this.getView().byId('idSites').getEntitySet()}`] = ["SiteCode"];
         },
         ValidateEntityData: async function (filtersFields, entity, object) {
