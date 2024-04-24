@@ -30,9 +30,9 @@
                 </smartForm:GroupElement> -->
                 <smartForm:GroupElement>
                     <smartField:SmartField value="{Category}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList" />
-                </smartForm:GroupElement>
+                </smartForm:GroupElement> 
                 <smartForm:GroupElement>
-                    <smartField:SmartField value="{docname}" editable = "{uiModel>/formEdit}" />
+                    <smartField:SmartField value="{docname}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"  />
                 </smartForm:GroupElement>
                 <!-- <smartForm:GroupElement>
                     <smartField:SmartField value="{Documentdescription}" editable = "{uiModel>/formEdit}" mandatory="true" />

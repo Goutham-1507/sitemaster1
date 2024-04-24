@@ -15,99 +15,96 @@
             </Toolbar>
         </customHeader>
         <!-- <VBox> -->
-            <smartForm:SmartForm id= "idInstSF" validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
-                <smartForm:layout>
-                    <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
-                </smartForm:layout>
-                <smartForm:Group>
-                    <!-- <smartForm:GroupElement>
+        <smartForm:SmartForm id= "idInstSF" validationMode="Async" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
+            <smartForm:layout>
+                <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
+            </smartForm:layout>
+            <smartForm:Group>
+                <!-- <smartForm:GroupElement>
                         <smartField:SmartField value="{language}" editable = "{uiModel>/formEdit}" textInEditModeSource="ValueList"/>
                     </smartForm:GroupElement> -->
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{InstitutionCode}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{InstitutionName}" editable = "{uiModel>/formEdit}" />
-                    </smartForm:GroupElement>
-                </smartForm:Group>
-            </smartForm:SmartForm>
-            <smartForm:SmartForm validationMode="Async" title="Correspondence Address" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
-                <smartForm:layout>
-                    <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
-                </smartForm:layout>
-                <smartForm:Group>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Address1}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Address2}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Address3}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Address4}" editable = "{uiModel>/formEdit}" />
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{City}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Country}" textInEditModeSource="ValueList" />
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Region}" textInEditModeSource="ValueList" />
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Website}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                </smartForm:Group>
-            </smartForm:SmartForm>
-            <Title level="H1" text="Communication" class = "sapUiSmallMarginBegin"></Title>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{InstitutionCode}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{InstitutionName}" editable = "{uiModel>/formEdit}" />
+                </smartForm:GroupElement>
+            </smartForm:Group>
+        </smartForm:SmartForm>
+        <smartForm:SmartForm validationMode="Async" title="Correspondence Address" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
+            <smartForm:layout>
+                <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
+            </smartForm:layout>
+            <smartForm:Group>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Address1}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Address2}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Address3}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Address4}" editable = "{uiModel>/formEdit}" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{City}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{District}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Country}" textInEditModeSource="ValueList" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Region}" textInEditModeSource="ValueList" />
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Zipcode}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Website}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+            </smartForm:Group>
+        </smartForm:SmartForm>
+        <Title level="H1" text="Communication" class = "sapUiSmallMarginBegin"></Title>
 
-            <smartTable:SmartTable id="SMOContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_SMOContact" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="SMO Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/formEdit}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,CreatedBy,CreatedOn,ChangedBy,ChangedOn,DeleteIndicator," initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID,Remarks">
-                <smartTable:customToolbar>
-                    <Toolbar>
-                        <ToolbarSpacer />
-                        <Button icon="sap-icon://add" visible="{uiModel>/formEdit}" press="onAddPress" />
-                    </Toolbar>
-                </smartTable:customToolbar>
-                <Table id="SMOContactDetails" mode="{= ${uiModel>/formEdit} ? 'Delete' : 'None'}" delete="DelRecord"/>
-            </smartTable:SmartTable>
+        <smartTable:SmartTable id="SMOContactDetailsTable" entitySet="SMOContacts" tableBindingPath="to_SMOContact" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" customizeConfig="{'textInEditModeSource': {'*': 'ValueList'}}" header="SMO Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/formEdit}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,CreatedBy,CreatedOn,ChangedBy,ChangedOn,DeleteIndicator," initiallyVisibleFields="Employeename,Role,Officetelephone,Extension,Mobilenum,EmailID,Remarks">
+            <smartTable:customToolbar>
+                <Toolbar>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://add" visible="{uiModel>/formEdit}" press="onAddPress" />
+                </Toolbar>
+            </smartTable:customToolbar>
+            <Table id="SMOContactDetails" mode="{= ${uiModel>/formEdit} ? 'Delete' : 'None'}" delete="DelRecord"/>
+        </smartTable:SmartTable>
 
-            <smartTable:SmartTable id="InstitutionContactDetailsTable" entitySet="INSTCD" tableBindingPath="to_INSTContactD" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="Institution Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/formEdit}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,Createdby,Createdon,Changedby,Changedon,Deleteind,Remarks" initiallyVisibleFields="ContactName,Role,Officetelephone,Extension,MobileNum,Email,Remarks">
-                <smartTable:customToolbar>
-                    <Toolbar>
-                        <ToolbarSpacer />
-                        <Button icon="sap-icon://add" visible="{uiModel>/formEdit}" press="onAddPress" />
-                    </Toolbar>
-                </smartTable:customToolbar>
-                <Table id="InstitutionContactDetails" mode="{= ${uiModel>/formEdit} ? 'Delete' : 'None'}" delete="DelRecord"/>
-            </smartTable:SmartTable>
+        <smartTable:SmartTable id="InstitutionContactDetailsTable" entitySet="INSTCD" tableBindingPath="to_INSTContactD" tableType="ResponsiveTable" useVariantManagement="false" useTablePersonalisation="false" enableAutoBinding="true" enableExport="false" header="Institution Contact Details" class="sapUiResponsiveContentPadding sapUxAPObjectPageSubSectionAlignContent" editable="{uiModel>/formEdit}" app:useSmartField="true" ignoredFields="Guid,InstGuidref,Createdby,Createdon,Changedby,Changedon,Deleteind,Remarks" initiallyVisibleFields="ContactName,Role,Officetelephone,Extension,MobileNum,Email,Remarks">
+            <smartTable:customToolbar>
+                <Toolbar>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://add" visible="{uiModel>/formEdit}" press="onAddPress" />
+                </Toolbar>
+            </smartTable:customToolbar>
+            <Table id="InstitutionContactDetails" mode="{= ${uiModel>/formEdit} ? 'Delete' : 'None'}" delete="DelRecord"/>
+        </smartTable:SmartTable>
 
-
-
-
-            <smartForm:SmartForm validationMode="Async" title="Notes" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
-                <smartForm:layout>
-                    <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
-                </smartForm:layout>
-                <smartForm:Group>
-                    <smartForm:GroupElement>
-                        <smartField:SmartField value="{Remarks}" app:multiLineSettings="{cols: 100, rows: 5}" editable = "{uiModel>/formEdit}"/>
-                    </smartForm:GroupElement>
-                </smartForm:Group>
-            </smartForm:SmartForm>
+        <smartForm:SmartForm validationMode="Async" title="Notes" editable="{uiModel>/editable}" class="sapUxAPObjectPageSubSectionAlignContent">
+            <smartForm:layout>
+                <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="4" />
+            </smartForm:layout>
+            <smartForm:Group>
+                <smartForm:GroupElement>
+                    <smartField:SmartField value="{Remarks}" app:multiLineSettings="{cols: 100, rows: 5}" editable = "{uiModel>/formEdit}"/>
+                </smartForm:GroupElement>
+            </smartForm:Group>
+        </smartForm:SmartForm>
         <!-- </VBox> -->
         <footer>
             <Toolbar>
                 <content>
-                    <Button  icon="{ path: 'message>/', formatter: '.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.buttonTypeFormatter' }" text="{path: 'message>/', formatter: '.highestSeverityMessages' }" press="handleMessagePopoverPress" ariaHasPopup="Dialog" />
+                    <Button icon="{ path: 'message>/', formatter: '.buttonIconFormatter' }" type="{ path: 'message>/', formatter: '.buttonTypeFormatter' }" text="{path: 'message>/', formatter: '.highestSeverityMessages' }" press="handleMessagePopoverPress" ariaHasPopup="Dialog" />
 
                     <!-- <Button visible="{=${messageModel>/messages}.length > 0 ? true : false }" icon="sap-icon://alert" type="Critical" press=".handleMessagePopoverPress" ariaHasPopup="Dialog" /> -->
                     <ToolbarSpacer />

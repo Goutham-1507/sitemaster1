@@ -99,8 +99,8 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="SitemasterRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
-                <Property Name="DocumentcatRef" Type="Edm.Guid" sap:label="DocumentcatRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="Site Master GUID Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="DocumentcatRef" Type="Edm.Guid" sap:label="Document Category Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
                 <Property Name="SiteCode" Type="Edm.String" MaxLength="10" sap:text="SiteName" sap:label="Site Code/Name" sap:quickinfo="Site Code" sap:value-list="standard"/>
                 <Property Name="SiteName" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:creatable="false" sap:updatable="false"/>
@@ -123,7 +123,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="SitemasterRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="Site Master GUID Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name" sap:value-list="standard"/>
                 <Property Name="EquipmentTypeReference" Type="Edm.Guid" sap:label="EquipmentTypeReference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
@@ -135,6 +135,16 @@
                 <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Status" sap:value-list="fixed-values"/>
                 <Property Name="EquipmentSerialNumber" Type="Edm.String" MaxLength="30" sap:label="Equipment Serial Number"/>
                 <Property Name="EquipmentBrandName" Type="Edm.String" MaxLength="30" sap:label="Equipment Brand Name"/>
+                <Property Name="Model" Type="Edm.String" MaxLength="15" sap:label="Model"/>
+                <Property Name="CapacityRange" Type="Edm.String" MaxLength="20" sap:label="Capacity/Range"/>
+                <Property Name="LocationSite" Type="Edm.String" MaxLength="30" sap:label="Location (Site)"/>
+                <Property Name="InstrumentID" Type="Edm.String" MaxLength="10" sap:label="Instrument ID"/>
+                <Property Name="Dischargedate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Discharge date"/>
+                <Property Name="Lastmaintenancedate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Maintenance Date" sap:quickinfo="Last maintenance date"/>
+                <Property Name="Retrievingdata" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Next Maintenance Date" sap:quickinfo="Next maintenance date"/>
+                <Property Name="CalibrationQualification" Type="Edm.String" MaxLength="20" sap:label="Calibration/Qualification"/>
+                <Property Name="Validity" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="50" sap:label="Remarks"/>
                 <Property Name="Createdby" Type="Edm.String" MaxLength="20" sap:label="Created By"/>
                 <Property Name="Createdon" Type="Edm.DateTimeOffset" Precision="0" sap:label="Created On" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
                 <Property Name="Changedby" Type="Edm.String" MaxLength="20" sap:label="Changed By"/>
@@ -171,7 +181,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="SitemasterReference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SitemasterRef" Type="Edm.Guid" sap:label="Site master guid Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Sitecode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Sitename" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
                 <Property Name="ChapterID" Type="Edm.String" MaxLength="4" sap:label="Level 1" sap:quickinfo="Chapter ID" sap:updatable="false" sap:value-list="standard"/>
@@ -196,7 +206,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="InstGuidref" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InstGuidref" Type="Edm.Guid" sap:label="Institution Guid reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ContactName" Type="Edm.String" MaxLength="40" sap:label="Contact Name" sap:quickinfo="Employee Code Name"/>
                 <Property Name="Role" Type="Edm.String" MaxLength="100" sap:label="Role"/>
                 <Property Name="Officetelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
@@ -226,7 +236,7 @@
                 <Property Name="ContactPerson" Type="Edm.String" MaxLength="40" sap:label="Contact Person"/>
                 <Property Name="RefrencedBy" Type="Edm.String" MaxLength="60" sap:label="Refrenced By"/>
                 <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address 1" sap:quickinfo="Address1"/>
-                <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address 2" sap:quickinfo="Address2"/>
+                <Property Name="Address2" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address 2" sap:quickinfo="Address2"/>
                 <Property Name="Address3" Type="Edm.String" MaxLength="80" sap:label="Address 3" sap:quickinfo="Address3"/>
                 <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address 4" sap:quickinfo="Address4"/>
                 <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="City"/>
@@ -265,6 +275,7 @@
                 <Property Name="Category" Type="Edm.String" MaxLength="3" sap:text="Scatgd" sap:label="Service Category" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Description" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ServiceCategoryIndicator" Type="Edm.String" MaxLength="20" sap:label="Service Category Indicator"/>
+                <Property Name="ServiceCatIndDes" Type="Edm.String" MaxLength="30" sap:label="Service Category Indicator Description"/>
                 <Property Name="ServiceCode" Type="Edm.String" MaxLength="10" sap:label="Site Service ID" sap:quickinfo="Service Code" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="ShortName" Type="Edm.String" MaxLength="60" sap:label="Short Name"/>
                 <Property Name="ServiceDescription" Type="Edm.String" MaxLength="100" sap:label="Site Service Description" sap:quickinfo="Service Description"/>
@@ -282,7 +293,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SiteGuidRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SiteGuidRef" Type="Edm.Guid" sap:label="Site Master Guid Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ContactName" Type="Edm.String" MaxLength="40" sap:label="Contact Name" sap:quickinfo="Employee Code Name"/>
                 <Property Name="Role" Type="Edm.String" MaxLength="100" sap:label="Role"/>
                 <Property Name="Officetelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
@@ -306,7 +317,7 @@
                 <Property Name="to_SITECONTD_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="to_SITESMOD_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="InstitutionMasterRef" Type="Edm.Guid" sap:label="InstitutionMasterRef" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="InstitutionMasterRef" Type="Edm.Guid" sap:label="Institution Master GUID Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:value-list="standard"/>
                 <Property Name="SiteCode" Type="Edm.String" MaxLength="10" sap:label="Site Code" sap:updatable="false"/>
                 <Property Name="SiteName" Type="Edm.String" MaxLength="100" sap:label="Site Name"/>
@@ -315,7 +326,7 @@
                 <Property Name="InsitutionName" Type="Edm.String" MaxLength="60" sap:label="Institution Name" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ContactPerson" Type="Edm.String" MaxLength="40" sap:label="Contact Person"/>
                 <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address 1" sap:quickinfo="Address1"/>
-                <Property Name="Address2" Type="Edm.String" MaxLength="80" sap:label="Address 2" sap:quickinfo="Address2"/>
+                <Property Name="Address2" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address 2" sap:quickinfo="Address2"/>
                 <Property Name="Address3" Type="Edm.String" MaxLength="80" sap:label="Address 3" sap:quickinfo="Address3"/>
                 <Property Name="Address4" Type="Edm.String" MaxLength="80" sap:label="Address 4" sap:quickinfo="Address4"/>
                 <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="City"/>
@@ -346,7 +357,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="InstGuidref" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InstGuidref" Type="Edm.Guid" sap:label="Institution Guid reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Employeename" Type="Edm.String" MaxLength="40" sap:label="Employee Name" sap:quickinfo="Employee Code Name" sap:value-list="standard"/>
                 <Property Name="Role" Type="Edm.String" MaxLength="100" sap:label="Role"/>
                 <Property Name="Officetelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
@@ -368,7 +379,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SiteGuidRef" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SiteGuidRef" Type="Edm.Guid" sap:label="Site Master Guid Reference" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Employeename" Type="Edm.String" MaxLength="40" sap:label="Employee Name" sap:quickinfo="Employee Code Name" sap:value-list="standard"/>
                 <Property Name="Role" Type="Edm.String" MaxLength="100" sap:label="Role"/>
                 <Property Name="Officetelephone" Type="Edm.String" MaxLength="30" sap:label="Office Telephone"/>
@@ -427,6 +438,7 @@
                 </Key>
                 <Property Name="Scatg" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="Scatgd" sap:label="Service Category"/>
                 <Property Name="Sctin" Type="Edm.String" MaxLength="20" sap:label="Service Category Indicator"/>
+                <Property Name="Scatinddesc" Type="Edm.String" MaxLength="30" sap:label="Service Category Indicator Description"/>
                 <Property Name="Scatgd" Type="Edm.String" MaxLength="40" sap:label="Service Category Description"/>
             </EntityType>
             <EntityType Name="zsdms_f4_ScodesType" sap:label="id description for site code and site name" sap:value-list="true" sap:content-version="1">
@@ -1420,6 +1432,9 @@
                                     <PropertyValue Property="ValueListProperty" String="Sctin"/>
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Scatinddesc"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Scatgd"/>
                                 </Record>
                             </Collection>
@@ -1912,6 +1927,7 @@
                                 <PropertyPath>InstitutionCode</PropertyPath>
                                 <PropertyPath>InstitutionName</PropertyPath>
                                 <PropertyPath>Address1</PropertyPath>
+                                <PropertyPath>Address2</PropertyPath>
                                 <PropertyPath>City</PropertyPath>
                                 <PropertyPath>Country</PropertyPath>
                                 <PropertyPath>Region</PropertyPath>
@@ -2062,6 +2078,7 @@
                         <PropertyValue Property="RequiredProperties">
                             <Collection>
                                 <PropertyPath>Address1</PropertyPath>
+                                <PropertyPath>Address2</PropertyPath>
                                 <PropertyPath>City</PropertyPath>
                                 <PropertyPath>Country</PropertyPath>
                                 <PropertyPath>Region</PropertyPath>

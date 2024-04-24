@@ -238,7 +238,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="SAP.SiteServiceMasterType/Category">
+            <!-- <Annotations Target="SAP.SiteServiceMasterType/Category">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Service Category"/>
@@ -259,7 +259,7 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-            </Annotations>
+            </Annotations> -->
             <Annotations Target="SAP.SMOContactsType/Employeename">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -358,6 +358,36 @@
                                     <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceDescription"/>
                                     <PropertyValue Property="ValueListProperty" String="Ssidd"/>
                                 </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.SiteServiceMasterType/Category">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Service Category"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZSDMS_F4_SCDB"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+                                    <PropertyValue Property="ValueListProperty" String="Scatg"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCategoryIndicator"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sctin"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceCatIndDes"/>
+                                    <PropertyValue Property="ValueListProperty" String="Scatinddesc"/>
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ServiceDescription"/>
+                                    <PropertyValue Property="ValueListProperty" String="Scatgd"/>
+                                </Record> -->
                             </Collection>
                         </PropertyValue>
                     </Record>
